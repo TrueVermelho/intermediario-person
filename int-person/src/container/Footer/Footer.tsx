@@ -1,0 +1,66 @@
+import Image from 'next/image';
+import "./footer.css";
+
+export default function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+
+        <div className="footer-logo">
+          <h2>SeuNome</h2>
+          <p>Criando sites modernos e rápidos para o seu negócio.</p>
+        </div>
+
+        <div className="footer-links">
+          <h3>Links Rápidos</h3>
+          <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-contact">
+          <h3>Contato</h3>
+          <p>Email: <a href="mailto:seuemail@gmail.com">seuemail@gmail.com</a></p>
+          <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank">(99) 99999-9999</a></p>
+        </div>
+
+        <div className="footer-social">
+          <h3>Siga-me</h3>
+          <div className="social-icons">
+            <a href="https://instagram.com/seuinsta" target="_blank">
+              <Image
+                src={"https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"}
+                alt="Logo do site"
+                width={120}
+                height={60}
+              />
+            </a>
+            <a href="https://facebook.com/seuface" target="_blank">
+              <Image
+                src={"https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"}
+                alt="Logo do site"
+                width={120}
+                height={60}
+              />
+            </a>
+            <a href="https://youtube.com/seuyt" target="_blank">
+              <Image
+                src={"https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"}
+                alt="Logo do site"
+                width={120}
+                height={60}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <p>&copy; <span id="year"></span> SeuNome. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  );
+}
