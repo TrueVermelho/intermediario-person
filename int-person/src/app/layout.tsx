@@ -1,4 +1,3 @@
-import ThemeProviderWrapper from '../components/layout/ThemeProviderWrapper';
 import { metadata } from '../lib/seo-metadata';
 import { GlobalStyles } from '../style/global-styles';
 
@@ -15,11 +14,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <link rel="icon" type="image/png" href="/favicon.png" />
       <body>
-        <ThemeProviderWrapper>
-          <GlobalStyles />
-          {children}
-          <Footer />
-        </ThemeProviderWrapper>
+        <GlobalStyles />
+        {children}
+        <Footer />
       </body>
     </html>
   );

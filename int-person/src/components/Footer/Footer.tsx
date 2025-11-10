@@ -1,4 +1,7 @@
-import Image from 'next/image';
+'use client';
+
+import { dataYear } from "@/utils/data";
+import Image from "next/image";
 import "./footer.css";
 
 export default function Footer() {
@@ -32,26 +35,26 @@ export default function Footer() {
           <div className="social-icons">
             <a href="https://instagram.com/seuinsta" target="_blank">
               <Image
-                src={"https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"}
-                alt="Logo do site"
-                width={120}
-                height={60}
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                alt="Instagram"
+                width={24}
+                height={24}
               />
             </a>
             <a href="https://facebook.com/seuface" target="_blank">
               <Image
-                src={"https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"}
-                alt="Logo do site"
-                width={120}
-                height={60}
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                alt="Facebook"
+                width={24}
+                height={24}
               />
             </a>
             <a href="https://youtube.com/seuyt" target="_blank">
               <Image
-                src={"https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"}
-                alt="Logo do site"
-                width={120}
-                height={60}
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                alt="Youtube"
+                width={24}
+                height={24}
               />
             </a>
           </div>
@@ -59,7 +62,9 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; <span id="year"></span> SeuNome. Todos os direitos reservados.</p>
+        <p>
+          &copy; {dataYear()} SeuNome. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );
