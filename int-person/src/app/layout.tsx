@@ -2,7 +2,7 @@ import ThemeProviderWrapper from '../components/layout/ThemeProviderWrapper';
 import { metadata } from '../lib/seo-metadata';
 import { GlobalStyles } from '../style/global-styles';
 
-import Footer from '@/container/Footer/Footer';
+import Footer from '@/components/Footer/Footer';
 
 export { metadata };
 export default function RootLayout({
