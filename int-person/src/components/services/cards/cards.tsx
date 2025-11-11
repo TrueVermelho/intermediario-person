@@ -18,7 +18,10 @@ export default function Cards() {
 
           <div className="cardConteudo">
             <h3>Plano Básico</h3>
-            <p>Perfeito para quem quer um site moderno e funcional com ótimo custo-benefício. Ideal para profissionais e pequenas empresas.</p>
+            <p>
+              Perfeito para quem quer um site moderno e funcional com ótimo custo-benefício.
+              Ideal para profissionais e pequenas empresas.
+            </p>
 
             <ul className="cardLista">
               <li>✔ 1 página personalizada</li>
