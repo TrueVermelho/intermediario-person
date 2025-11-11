@@ -1,7 +1,7 @@
 import { metadata } from '../lib/seo-metadata';
 import { GlobalStyles } from '../style/global-styles';
 
-import Footer from '@/components/Footer/Footer';
+import Footer from '@/components/body/Footer/Footer';
 
 export { metadata };
 export default function RootLayout({
