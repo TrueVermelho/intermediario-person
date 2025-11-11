@@ -1,3 +1,4 @@
+import Header from '@/components/Header/header';
 import { metadata } from '../lib/seo-metadata';
 import { GlobalStyles } from '../style/global-styles';
 
@@ -15,6 +16,7 @@ export default function RootLayout({
       <link rel="icon" type="image/png" href="/favicon.png" />
       <body>
         <GlobalStyles />
+        <Header />
         {children}
         <Footer />
       </body>
