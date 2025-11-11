@@ -1,3 +1,4 @@
+import Youtube from '@/components/services/youtube/youtube';
 import './styleSobre.css';
 
 export default function Sobre() {
@@ -20,6 +21,7 @@ export default function Sobre() {
           </div>
         </div>
       </div>
+      <Youtube />
     </section>
   );
 }
