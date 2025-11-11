@@ -29,7 +29,7 @@
 
 .background {
   /* adcionar ao lado das classes */
-  background-image: url('../img/background-city.png');
+  background-image: url('./background-city.png');
   background-size: cover;
   background-attachment: fixed;
 }

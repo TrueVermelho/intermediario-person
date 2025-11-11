@@ -5,6 +5,7 @@ export default function Youtube() {
         <iframe
           src="https://www.youtube.com/embed/SEU_VIDEO_ID"
           title="Título do Vídeo"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
