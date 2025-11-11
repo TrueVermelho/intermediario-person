@@ -64,7 +64,7 @@
   section {
     display: block !important;
     margin: 0 !important;
-    padding: 10px 0 !important;
+    padding: 0 !important;
     min-height: auto !important;
     height: auto !important;
   }
@@ -78,7 +78,7 @@
     min-height: auto !important;
     height: auto !important;
     margin: 0 !important;
-    padding: 10px 0 !important;
+    padding: 0 !important;
   }
 
   /* Impede quebras manuais */
@@ -114,7 +114,8 @@
   }
 
   /* Ajusta imagens */
-  img {
+  img,
+  Image {
     max-width: 100%;
     height: auto;
   }
@@ -135,12 +136,5 @@
   @page {
     margin: 1.5cm;
     size: A4 portrait;
-  }
-
-  /* outros adcionados */
-  .sobre-conteudo {
-    padding: 0rem;
-    margin-left: 9rem;
-    justify-content: left;
   }
 }
