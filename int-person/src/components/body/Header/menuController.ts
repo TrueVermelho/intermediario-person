@@ -1,13 +1,13 @@
 export class MenuController {
-  private buttons: NodeListOf<HTMLElement>;
+  private ListaHTML: NodeListOf<HTMLElement>;
 
   constructor(buttonSelector: string) {
-    this.buttons = document.querySelectorAll(buttonSelector);
+    this.ListaHTML = document.querySelectorAll(buttonSelector);
     this.initialize();
   }
 
   private initialize() {
-    this.buttons.forEach(button => {
+    this.ListaHTML.forEach(button => {
       const targetMenuId = button.dataset.target;
       if (!targetMenuId) return;
 
