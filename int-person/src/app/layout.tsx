@@ -1,6 +1,5 @@
 import { metadata } from '../lib/seo-metadata';
 import { GlobalStyles } from '../style/global-styles';
-import './globals.css';
 
 import Footer from '@/components/body/Footer/Footer';
 
