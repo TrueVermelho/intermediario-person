@@ -23,4 +23,46 @@ export const GlobalStyles = createGlobalStyle`
     font-family: var(--title-color);
     margin-bottom: 1.5rem;
   }
+  
+  .background {
+    /* adcionar ao lado das classes */
+    background-image: url('./background-city.png');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  .section {
+    /* adcionar ao lado das classes */
+    min-height: 100vh;
+    /*tamanho 100% da tela automaticamente*/
+    padding: 3rem;
+    /*espaçamento padrao interno*/
+  }
+
+  /*===== RESPONSIVIDADE DO SECTION =====*/
+  @media (max-width: 1024px) {
+    .section {
+      padding: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 2rem;
+      min-height: auto;
+      /* permite que a altura se ajuste melhor em telas menores */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .section {
+      padding: 1rem;
+    }
+  }
 `;
