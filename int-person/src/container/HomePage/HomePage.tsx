@@ -1,5 +1,6 @@
 "use client";
 
+import ContatoBody from "@/components/body/Contato/Contato";
 import Header from "@/components/body/Header/header";
 import Home from "@/components/body/Home/home";
 import Servicos from "@/components/body/Servicos/servicos";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Home />
       <Sobre />
       <Servicos />
+      <ContatoBody />
     </>
   );
 }
