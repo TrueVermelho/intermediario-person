@@ -1,27 +1,25 @@
-import jwt from 'jsonwebtoken';
+// src/app/api/login/route.ts
+import { generateToken } from '@/utils/security/auth';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   const { email, password } = await req.json();
 
-  if (email === 'admin@email.com' && password === '123') {
-    const token = jwt.sign({ email }, process.env.JWT_SECRET!, {
-      expiresIn: '7d',
-    });
+  // Simulação de validação
+  if (email === 'teste@user.com' && password === '123') {
+    const token = generateToken('12345'); // ID fictício
 
-    const response = NextResponse.json({ success: true });
-
-    // Aqui sim você pode setar o cookie
-    response.cookies.set('token', token, {
+    const res = NextResponse.json({ success: true });
+    res.cookies.set('token', token, {
       httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      path: '/',
+      secure: true,         // só via HTTPS
+      sameSite: 'strict',   // protege contra CSRF
+      path: '/',            // cookie global
       maxAge: 60 * 60 * 24 * 7, // 7 dias
     });
 
-    return response;
+    return res;
   }
 
-  return NextResponse.json({ success: false }, { status: 401 });
+  return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
 }

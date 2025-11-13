@@ -1,33 +1,31 @@
-import { verify } from 'jsonwebtoken';
+// src/middleware.ts
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { verifyToken } from './utils/security/auth'; // helper personalizado
 
-// MIDDLEWARE VERIFICA SE ESTA LOGADO
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
-  const secret = process.env.JWT_SECRET;
 
-  // Se não tiver token ou secret, redireciona para login
-  if (!token || !secret) {
-    if (request.nextUrl.pathname.startsWith('/dashboard') || 
-        request.nextUrl.pathname.startsWith('/profile') ||
-        request.nextUrl.pathname.startsWith('/settings')) {
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
-    return NextResponse.next();
-  }
-
-  try {
-    verify(token, secret);
-    return NextResponse.next();
-  } catch (error: unknown) {
-    console.error('JWT verification failed:', error instanceof Error ? error.message : 'Unknown error');
+  // Se não houver token, redireciona
+  if (!token) {
+    console.warn('Sem token, redirecionando para /login');
     return NextResponse.redirect(new URL('/login', request.url));
   }
+
+  // Verifica o token via helper
+  const decoded = verifyToken(token);
+  if (!decoded) {
+    console.error('Token inválido ou expirado.');
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  // (Opcional) Loga informações do usuário autenticado
+  console.log('Usuário autenticado:', decoded);
+
+  return NextResponse.next();
 }
 
-// Define em quais rotas o middleware deve rodar
+// ✅ Define em quais rotas o middleware roda
 export const config = {
   matcher: ['/dashboard/:path*', '/profile/:path*', '/settings/:path*'],
 };
-
