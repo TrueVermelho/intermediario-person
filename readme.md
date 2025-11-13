@@ -44,7 +44,7 @@
   <li><a href="./int-person/next.config.ts" target="_blank" rel="noopener noreferrer">01 headers HTTP</a></li>
   <li><a href="./int-person/src/proxy.ts" target="_blank" rel="noopener noreferrer">02 Proxy - middleware</a></li>
   <li><a href="./int-person/src/app/api/login/route.ts" target="_blank" rel="noopener noreferrer">03 Token JWT</a></li>
-  <li><a href="" target="_blank" rel="noopener noreferrer">04 </a></li>
+  <li><a href="" target="_blank" rel="noopener noreferrer">04 Bcrypt</a></li>
 </ul>
 
 ### ⭐ Validadores de segurança
