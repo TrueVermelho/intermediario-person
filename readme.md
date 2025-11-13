@@ -44,12 +44,12 @@
   <li><a href="./int-person/next.config.ts" target="_blank" rel="noopener noreferrer">01 headers HTTP</a></li>
   <li><a href="./int-person/src/proxy.ts" target="_blank" rel="noopener noreferrer">02 Proxy - middleware</a></li>
   <li><a href="./int-person/src/app/api/login/route.ts" target="_blank" rel="noopener noreferrer">03 Token JWT</a></li>
-  <li><a href="./README/01Configuracoes/04next-config.md" target="_blank" rel="noopener noreferrer">04 next-config</a></li>
+  <li><a href="" target="_blank" rel="noopener noreferrer">04 </a></li>
 </ul>
 
-### ⭐ Passos da estrutura do projeto
+### ⭐ Validadores de segurança
 <ul>
-  <li><a href="./README/02estrutura/01src.md" target="_blank" rel="noopener noreferrer">01 src</a></li>
-  <li><a href="./README/02estrutura/02exemplo.md" target="_blank" rel="noopener noreferrer">02 exemplo do page</a></li>
-  <li><a href="./README/02estrutura/03layout.md" target="_blank" rel="noopener noreferrer">03 Layout</a></li>
+  <li><a href="./int-person/src/lib-server/validator/validarEmail.ts" target="_blank" rel="noopener noreferrer">01 Validar Email</a></li>
+  <li><a href="./int-person/src/lib-server/validator/validarString.ts" target="_blank" rel="noopener noreferrer">02 Validar String</a></li>
+  <li><a href="./int-person/src/lib-server/validator/validarNumero.ts" target="_blank" rel="noopener noreferrer">03 Validar Numero</a></li>
 </ul>
