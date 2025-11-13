@@ -2,7 +2,7 @@
 
 ## - Visualização Geral do Layout
 
-⚠️ MODIFICAR A METADATA - SEO ⚠️ - **(src/lib/sep-metadata.ts)**
+⚠️ MODIFICAR A METADATA - SEO ⚠️ - **(src/lib/seo-metadata.ts)**
 
 ```
 src/
