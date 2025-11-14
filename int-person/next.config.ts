@@ -12,10 +12,10 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
-  // ✔ Compilador do Next (styled-components)
+  /* ✔ Compilador do Next (styled-components)
   compiler: {
     styledComponents: true,
-  },
+  },*/
 
   // ✔ Imagens externas permitidas
   images: {
@@ -23,6 +23,18 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "cdn.pixabay.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+      },
+      {
+        protocol: "https",
+        hostname: "fonts.gstatic.com", // correto para fontes/imagens
+      },
+      {
+        protocol: "https",
+        hostname: "fonts.googleapis.com",
       },
     ],
   },

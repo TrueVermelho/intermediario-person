@@ -1,22 +1,18 @@
-import { metadata } from '../lib/seo-metadata';
-import { GlobalStyles } from '../style/global-styles';
-
 import Footer from '@/components/body/Footer/Footer';
+import { metadata } from '../lib/seo-metadata';
+
+import './globals.css';
 
 export { metadata };
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <link rel="icon" type="image/png" href="/favicon.png" />
       <body>
-        <GlobalStyles />
-        {children}
-        <Footer />
+        <main>
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );

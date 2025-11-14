@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       message: "Login bem-sucedido",
     });
 
-    // 🍪 Define o cookie HttpOnly
     response.cookies.set("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

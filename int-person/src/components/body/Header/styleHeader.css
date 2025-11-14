@@ -1,5 +1,5 @@
 .header {
-  background: #111;
+  background: var(--primary-color);
   color: #fff;
   position: sticky;
   top: 0;
