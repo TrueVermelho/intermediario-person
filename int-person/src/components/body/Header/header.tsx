@@ -10,7 +10,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="header">
+    <section className="header background">
       <div className="header-container">
         <div className="logo">
           <a href="#home">SeuLogo</a>
@@ -35,6 +35,6 @@ export default function Header() {
           <span></span>
         </button>
       </div>
-    </header>
+    </section>
   );
 }
