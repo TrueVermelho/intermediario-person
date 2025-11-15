@@ -2,14 +2,16 @@ import type { NextConfig } from "next";
 
 const csp = [
   "default-src 'self'",
-  "img-src 'self' data: blob: https://*.google.com https://*.gstatic.com https://i.ytimg.com https://*.youtube.com",
-  "script-src 'self' 'unsafe-inline' https://*.google.com https://*.gstatic.com https://*.youtube.com",
-  "style-src 'self' 'unsafe-inline' https://*.googleapis.com",
+  "img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://fonts.gstatic.com https://i.ytimg.com https://www.youtube.com",
+  "script-src 'self' https://www.google.com https://www.gstatic.com https://www.youtube.com",
+  "style-src 'self' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
   "object-src 'none'",
   "base-uri 'self'",
-  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://*.google.com https://maps.google.com",
-  "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.youtube.com",
+  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://maps.google.com",
+  "connect-src 'self' https://maps.googleapis.com https://www.google.com https://www.youtube.com",
 ].join("; ");
+
 
 const nextConfig: NextConfig = {
   /* ✔ Compilador do Next (styled-components)
