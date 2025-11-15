@@ -1,5 +1,3 @@
-// lib-server/security/auth.ts
-
 import jwt from "jsonwebtoken";
 import { roles, type Role } from './roles';
 
@@ -9,19 +7,16 @@ if (!SECRET) {
   throw new Error("❌ JWT_SECRET não definido nas variáveis de ambiente.");
 }
 
-// Payload do token
 export interface UserPayload {
   userId?: string;
   email?: string;
   role: Role; // agora é o union literal
 }
 
-// Gera token
 export function generateToken(payload: UserPayload) {
   return jwt.sign(payload, SECRET, { expiresIn: "7d" });
 }
 
-// Verifica token
 export function verifyToken(token: string): UserPayload | null {
   try {
     return jwt.verify(token, SECRET) as UserPayload;
@@ -31,7 +26,6 @@ export function verifyToken(token: string): UserPayload | null {
   }
 }
 
-// Verifica permissão por ação
 export function verifyPermission(token: string, action: string): boolean {
   try {
     const decoded = jwt.verify(token, SECRET) as { role: Role };

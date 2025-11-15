@@ -1,42 +1,33 @@
-import { verifyPermission, verifyToken } from "@/lib-server/security/auth";
+import { adminGuard } from "@/lib-server/middleware/adminGuard";
+import { authGuard } from "@/lib-server/middleware/authGuard";
+import { getToken } from "@/lib-server/middleware/getToken";
 import { NextResponse, type NextRequest } from "next/server";
 
 export default async function proxy(req: NextRequest) {
   const url = new URL(req.url);
   const pathname = url.pathname;
 
-  const token = req.cookies.get("token")?.value;
+  const token = getToken(req);
 
-  // TOKEN
+  // TOKEN ausente
   if (!token) {
-    console.warn("Sem token, redirecionando para /login");
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  const decoded = verifyToken(token);
-  if (!decoded) {
-    console.error("Token inválido ou expirado. Redirecionando...");
-    const response = NextResponse.redirect(new URL("/login", req.url));
-
-    response.cookies.delete("token");
-    return response;
+  // VALIDAÇÃO GLOBAL DO TOKEN
+  const decoded = authGuard(req, token);
+  if (decoded instanceof NextResponse) {
+    return decoded;
   }
 
-  // RBAC
+  // RBAC somente para rotas admin
   if (pathname.startsWith("/api/admin")) {
-    const canAccess = verifyPermission(token, "admin_access");
-
-    if (!canAccess) {
-      return NextResponse.json(
-        { error: "Você não tem permissão para acessar esta rota." },
-        { status: 403 }
-      );
+    const result = adminGuard(req, token);
+    if (result instanceof NextResponse) {
+      return result;
     }
-
-    console.log("RBAC permitido → admin_access liberado.");
   }
 
-  console.log("Usuário autenticado:", decoded);
   return NextResponse.next();
 }
 
@@ -48,4 +39,3 @@ export const config = {
     "/api/admin/:path*",
   ],
 };
-
