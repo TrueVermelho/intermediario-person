@@ -1,60 +1,57 @@
-.mapSection {
+.video-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  /* permite mais vídeos embaixo */
+  justify-content: center;
+  align-items: flex-start;
+  /* evita esticar verticalmente */
   width: 100%;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
   box-sizing: border-box;
   gap: 30px;
-  text-align: center;
+  /* espaço entre vídeos */
 }
 
-.titleMap {
-  color: #222;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  font-weight: 600;
-}
-
-.mapWrapper {
+.video-container {
   position: relative;
-  width: 100%;
-  max-width: 900px;
+  flex: 1 1 700px;
+  /* flexível até 700px */
+  max-width: 700px;
   aspect-ratio: 16 / 9;
-  /* MESMO PADRÃO DO YOUTUBE */
-  background: #e0e0e0;
+  background: #000;
   border-radius: 12px;
   overflow: hidden;
-  margin: 0 auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.googleMap {
+.video-container iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  /* substitui top/left */
   width: 100%;
   height: 100%;
   border: none;
 }
 
-.mapDescription {
-  color: #555;
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
-  line-height: 1.5;
+.video-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* ===== Responsividade ===== */
 @media (max-width: 768px) {
-  .mapWrapper {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-
-  .mapSection {
-    margin: 20px auto;
+  .video-section {
+    margin: 30px auto;
     padding: 0 10px;
     gap: 20px;
+  }
+
+  .video-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+    border-radius: 8px;
   }
 }

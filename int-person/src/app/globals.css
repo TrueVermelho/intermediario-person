@@ -35,7 +35,6 @@ html {
   scroll-behavior: smooth;
   /* Rolagem suave */
   scroll-padding-top: 80px;
-  /* Altura da navbar fixa */
 }
 
 body {
@@ -59,7 +58,6 @@ h6 {
 .background {
   position: relative;
   background-image: url('/img/background-city.png');
-  /* substitua a imagem */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

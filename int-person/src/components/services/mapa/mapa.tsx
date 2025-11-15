@@ -1,3 +1,5 @@
+import "./styleMapa.css";
+
 export default function Mapa() {
   return (
     <section className="mapSection">

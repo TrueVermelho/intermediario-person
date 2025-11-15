@@ -1,3 +1,5 @@
+import "./styleYoutube.css";
+
 export default function Youtube() {
   return (
     <div className="video-section">

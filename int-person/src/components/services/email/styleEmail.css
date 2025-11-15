@@ -8,6 +8,9 @@
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .titleEmail {
@@ -31,8 +34,8 @@
 .nameEmail:focus,
 .textEmail:focus,
 .areaTextEmail:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px var(--secondary-color);
 }
 
 .areaTextEmail {
@@ -42,7 +45,7 @@
 
 .buttonEmail {
   padding: 12px;
-  background: #4CAF50;
+  background: var(--primary-color);
   color: white;
   font-size: 16px;
   font-weight: 600;
@@ -53,7 +56,7 @@
 }
 
 .buttonEmail:hover {
-  background: #43a047;
+  background: var(--secondary-color);
   transform: scale(1.03);
 }
 

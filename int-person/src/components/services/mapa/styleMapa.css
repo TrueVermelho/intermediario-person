@@ -1,7 +1,5 @@
 .mapSection {
   width: 100%;
-  max-width: 1200px;
-  margin: 40px auto;
   background: #fff;
   padding: 40px 20px;
   text-align: center;
@@ -19,10 +17,8 @@
 .mapWrapper {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
   padding-bottom: 56.25%;
-  /* 16:9 */
+  /* proporção 16:9 */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
@@ -49,7 +45,7 @@
   line-height: 1.5;
 }
 
-/* Responsividade */
+/* Melhor ajuste para telas pequenas */
 @media (max-width: 600px) {
   .mapSection {
     padding: 20px 10px;

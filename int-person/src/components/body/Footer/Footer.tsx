@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="social-icons">
             <a href="https://instagram.com/seuinsta" target="_blank">
               <Image
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                src="./img/instagram.svg"
                 alt="Instagram"
                 width={24}
                 height={24}
@@ -43,7 +43,7 @@ export default function Footer() {
             </a>
             <a href="https://facebook.com/seuface" target="_blank">
               <Image
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                src="./img/facebook.svg"
                 alt="Facebook"
                 width={24}
                 height={24}
@@ -51,7 +51,7 @@ export default function Footer() {
             </a>
             <a href="https://youtube.com/seuyt" target="_blank">
               <Image
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                src="./img/youtube.svg"
                 alt="Youtube"
                 width={24}
                 height={24}
