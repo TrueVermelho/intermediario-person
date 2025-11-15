@@ -1,5 +1,19 @@
 import type { NextConfig } from "next";
 
+/* PADRÃO
+const csp = [
+  "default-src 'self'",
+  "img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://fonts.gstatic.com https://i.ytimg.com https://www.youtube.com",
+  "script-src 'self' https://www.google.com https://www.gstatic.com https://www.youtube.com",
+  "style-src 'self' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://maps.google.com",
+  "connect-src 'self' https://maps.googleapis.com https://www.google.com https://www.youtube.com",
+].join("; ");
+*/
+
 const csp = [
   "default-src 'self'",
   "img-src 'self' data: blob: https://*.google.com https://*.gstatic.com https://i.ytimg.com https://*.youtube.com",

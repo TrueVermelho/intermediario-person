@@ -1,19 +1,13 @@
-import { verifyToken } from "@/lib-server/security/auth";
+import { verifyPermission, verifyToken } from "@/lib-server/security/auth";
 import { NextResponse, type NextRequest } from "next/server";
 
 export default async function proxy(req: NextRequest) {
   const url = new URL(req.url);
   const pathname = url.pathname;
 
-  const protectedRoutes = ["/dashboard", "/profile", "/settings"];
-  const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
-
-  if (!isProtected) {
-    return NextResponse.next();
-  }
-
   const token = req.cookies.get("token")?.value;
 
+  // TOKEN
   if (!token) {
     console.warn("Sem token, redirecionando para /login");
     return NextResponse.redirect(new URL("/login", req.url));
@@ -28,6 +22,30 @@ export default async function proxy(req: NextRequest) {
     return response;
   }
 
+  // RBAC
+  if (pathname.startsWith("/api/admin")) {
+    const canAccess = verifyPermission(token, "admin_access");
+
+    if (!canAccess) {
+      return NextResponse.json(
+        { error: "Você não tem permissão para acessar esta rota." },
+        { status: 403 }
+      );
+    }
+
+    console.log("RBAC permitido → admin_access liberado.");
+  }
+
   console.log("Usuário autenticado:", decoded);
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: [
+    "/dashboard/:path*",
+    "/profile/:path*",
+    "/settings/:path*",
+    "/api/admin/:path*",
+  ],
+};
+
