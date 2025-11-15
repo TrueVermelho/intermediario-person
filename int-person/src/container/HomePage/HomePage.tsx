@@ -2,9 +2,10 @@
 
 import Header from "@/components/body/Header/header";
 import Home from "@/components/body/Home/home";
-import Servicos from "@/components/body/Servicos/servicos";
 import Sobre from "@/components/body/Sobre/sobre";
+import Cards from "@/components/services/cards/cards";
 import Contato from "@/components/services/contato/contato";
+import Mapa from "@/components/services/mapa/mapa";
 
 export default function HomePage() {
   return (
@@ -12,8 +13,9 @@ export default function HomePage() {
       <Header />
       <Home />
       <Sobre />
-      <Servicos />
+      <Cards />
       <Contato />
+      <Mapa />
     </>
   );
 }

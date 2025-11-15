@@ -31,7 +31,6 @@
 }
 
 html {
-  font-size: 62, 5%;
   /* deixar o nav acima da section */
   scroll-behavior: smooth;
   /* Rolagem suave */
@@ -87,36 +86,32 @@ h6 {
 /* ======================== BACKGROUND END ========================*/
 
 .section {
-  /* adcionar ao lado das classes */
-  min-height: 100vh;
-  /*tamanho 100% da tela automaticamente*/
-  padding: 3rem;
-  /*espaçamento padrao interno*/
+  width: 100%;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
 }
 
 /* ======================== RESPONSIVIDADE DO SECTION ========================*/
 @media (max-width: 1024px) {
   .section {
-    padding: 2.5rem;
+    padding: 2.5rem 1.8rem;
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 2rem;
-    min-height: auto;
-    /* permite que a altura se ajuste melhor em telas menores */
+    padding: 2rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .section {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
 }
 
 @media (max-width: 360px) {
   .section {
-    padding: 1rem;
+    padding: 1rem 0.8rem;
   }
 }

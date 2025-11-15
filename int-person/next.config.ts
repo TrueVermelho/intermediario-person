@@ -2,13 +2,13 @@ import type { NextConfig } from "next";
 
 const csp = [
   "default-src 'self'",
-  "img-src 'self' data: blob:",
-  "script-src 'self' 'unsafe-inline'",
-  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://*.google.com https://*.gstatic.com https://i.ytimg.com https://*.youtube.com",
+  "script-src 'self' 'unsafe-inline' https://*.google.com https://*.gstatic.com https://*.youtube.com",
+  "style-src 'self' 'unsafe-inline' https://*.googleapis.com",
   "object-src 'none'",
-  "frame-ancestors 'none'",
   "base-uri 'self'",
-  "connect-src 'self'",
+  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://*.google.com https://maps.google.com",
+  "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.youtube.com",
 ].join("; ");
 
 const nextConfig: NextConfig = {
@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "X-Frame-Options",
-            value: "DENY",
+            value: "SAMEORIGIN",
           },
           {
             key: "Strict-Transport-Security",
