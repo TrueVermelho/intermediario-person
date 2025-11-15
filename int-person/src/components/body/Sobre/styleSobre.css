@@ -1,4 +1,5 @@
-#sobre.section {
+.sobre,
+section {
   min-height: auto;
   padding: 0;
 }

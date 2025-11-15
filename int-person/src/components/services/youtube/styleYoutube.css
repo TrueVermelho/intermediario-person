@@ -2,27 +2,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  /* permite mais vídeos um embaixo do outro */
+  flex-direction: column;
   width: 100%;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
   box-sizing: border-box;
   gap: 30px;
-  /* espaço entre vídeos se houver mais */
 }
 
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 700px;
-  /* largura máxima confortável */
+  max-width: 900px;
   aspect-ratio: 16 / 9;
   background: #000;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
 }
 
 .video-container iframe {
@@ -43,7 +41,7 @@
   }
 
   .video-section {
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 0 10px;
     gap: 20px;
   }

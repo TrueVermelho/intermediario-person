@@ -3,8 +3,9 @@ import './styleSobre.css';
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="section">
-      <div className="sobre-container">
+    <section id="sobre" className="sobre section">
+
+      <section className="sobre-container">
         <div className="sobre-conteudo">
           <div className="sobre-texto">
             <h2>Sobre o Projeto</h2>
@@ -20,7 +21,8 @@ export default function Sobre() {
             </p>
           </div>
         </div>
-      </div>
+      </section>
+
       <Youtube />
     </section>
   );
