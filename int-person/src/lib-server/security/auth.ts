@@ -10,7 +10,7 @@ if (!SECRET) {
 export interface UserPayload {
   userId?: string;
   email?: string;
-  role: Role; // agora é o union literal
+  role: Role;
 }
 
 export function generateToken(payload: UserPayload) {

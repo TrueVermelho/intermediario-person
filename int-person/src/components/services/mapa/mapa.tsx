@@ -2,7 +2,7 @@ import "./styleMapa.css";
 
 export default function Mapa() {
   return (
-    <section className="mapSection">
+    <section className="mapSection background">
       <h2 className="titleMap">📍 Encontre-nos</h2>
 
       <div className="mapWrapper">
