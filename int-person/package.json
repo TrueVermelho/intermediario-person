@@ -9,6 +9,8 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "firebase": "^12.6.0",
+    "firebase-admin": "^13.6.0",
     "jsonwebtoken": "^9.0.2",
     "next": "16.0.1",
     "react": "19.2.0",

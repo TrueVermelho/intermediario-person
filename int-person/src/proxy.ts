@@ -1,34 +1,27 @@
-import { adminGuard } from "@/lib-server/middleware/adminGuard";
-import { authGuard } from "@/lib-server/middleware/authGuard";
-import { getToken } from "@/lib-server/middleware/getToken";
-import { NextResponse, type NextRequest } from "next/server";
+import { adminAuth } from "@/lib-server/middleware/firebaseAdmin";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function proxy(req: NextRequest) {
-  const url = new URL(req.url);
-  const pathname = url.pathname;
+export async function proxy(req: NextRequest) {
+  const token = req.cookies.get("session")?.value;
 
-  const token = getToken(req);
-
-  // TOKEN ausente
   if (!token) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // VALIDAÇÃO GLOBAL DO TOKEN
-  const decoded = authGuard(req, token);
-  if (decoded instanceof NextResponse) {
-    return decoded;
-  }
+  try {
+    const decoded = await adminAuth.verifyIdToken(token);
 
-  // RBAC somente para rotas admin
-  if (pathname.startsWith("/api/admin")) {
-    const result = adminGuard(req, token);
-    if (result instanceof NextResponse) {
-      return result;
+    const role = decoded.role || "user";
+
+    if (req.nextUrl.pathname.startsWith("/api/admin") && role !== "admin") {
+      return NextResponse.redirect(new URL("/403", req.url));
     }
-  }
 
-  return NextResponse.next();
+    return NextResponse.next();
+  } catch (err) {
+    console.error("TOKEN INVALIDO:", err);
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 }
 
 export const config = {
