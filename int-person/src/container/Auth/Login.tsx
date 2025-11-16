@@ -1,10 +1,11 @@
 "use client";
 
+import LoginForm from "@/components/auth/login/LoginForm";
 import { auth, googleProvider } from "@/lib/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 
-export default function LoginForm() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,26 +28,11 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleLogin} className="flex flex-col gap-3">
-      <input
-        type="email"
-        placeholder="Email"
-        className="border p-2"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-
-      <input
-        type="password"
-        placeholder="Senha"
-        className="border p-2"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button className="p-2 bg-blue-600 text-white">Entrar</button>
-
-      <button type="button" onClick={signInGoogle} className="p-2 bg-red-500 text-white">
-        Entrar com Google
-      </button>
-    </form>
+    <LoginForm
+      handleLogin={handleLogin}
+      setEmail={setEmail}
+      setPassword={setPassword}
+      signInGoogle={signInGoogle}
+    />
   );
 }
