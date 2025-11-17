@@ -1,0 +1,33 @@
+.BotaoLogout {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: auto;
+  /* se adapta ao conteúdo */
+  max-width: 100%;
+  /* nunca ultrapassa o container */
+}
+
+.BotaoLogout:hover {
+  background-color: #d62839;
+  transform: scale(1.05);
+}
+
+.BotaoLogout:active {
+  background-color: #b51729;
+  transform: scale(0.95);
+}
+
+/* Responsividade extra */
+@media (max-width: 480px) {
+  .BotaoLogout {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
