@@ -1,3 +1,4 @@
+import type { User } from "firebase/auth";
 import "./styleLogin.css";
 
 interface LoginFormProps {
@@ -5,6 +6,8 @@ interface LoginFormProps {
   setEmail: (email: string) => void;
   setPassword: (password: string) => void;
   signInGoogle: () => void;
+  user: User | null;
+  loading: boolean;
 }
 
 export default function LoginForm({
@@ -12,7 +15,13 @@ export default function LoginForm({
   setEmail,
   setPassword,
   signInGoogle,
+  user,
+  loading,
 }: LoginFormProps) {
+
+  if (loading) return <p>Carregando...</p>;
+  if (user) return <p>Você já está logado.</p>;
+
   return (
     <form onSubmit={handleLogin} className="loginForm">
       <input
