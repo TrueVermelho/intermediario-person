@@ -1,0 +1,30 @@
+.BotaoLogin {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Hover */
+.BotaoLogin:hover {
+  background: #1e40af;
+}
+
+/* Active */
+.BotaoLogin:active {
+  transform: scale(0.97);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .BotaoLogin {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.05rem;
+  }
+}

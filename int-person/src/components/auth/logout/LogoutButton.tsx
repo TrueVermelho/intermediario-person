@@ -4,7 +4,7 @@ import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-import "./styleButton.css";
+import "./styleButtonLogout.css";
 
 export default function LogoutButton() {
   const router = useRouter();
