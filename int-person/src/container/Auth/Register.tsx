@@ -32,7 +32,7 @@ export default function RegisterPage() {
       });
 
       alert("Conta criada com sucesso!");
-      router.push("/dashboard"); // Redireciona o usuario
+      auth.onAuthStateChanged(() => router.push("/dashboard")); // Redireciona o usuario
     } catch (err: unknown) {
       if (err instanceof Error) alert(err.message);
     }

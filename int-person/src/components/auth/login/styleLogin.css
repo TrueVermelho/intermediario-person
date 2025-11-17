@@ -60,6 +60,13 @@
   background: #c33a2e;
 }
 
+.erroMensagem {
+  color: red;
+  margin-top: 8px;
+  font-size: 14px;
+  display: block;
+}
+
 /* telas pequenas (mobile normal) */
 @media (max-width: 480px) {
   .loginForm {

@@ -14,7 +14,9 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Se o usuário já estiver logado → redireciona
+  const [erroMensagem, setErroMensagem] = useState<string | null>(null);
+
+  // Redirecionar se já estiver logado
   useEffect(() => {
     if (user) router.push("/dashboard");
   }, [user, router]);
@@ -24,18 +26,23 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log('Fazendo login Email');
+      console.log("Fazendo login Email");
+
+      auth.onAuthStateChanged(() => router.push("/dashboard"));
+
     } catch (err: unknown) {
-      if (err instanceof Error) alert(err.message);
+      if (err instanceof Error) {
+        setErroMensagem(err.message);
+      }
     }
   }
 
   async function signInGoogle() {
     try {
       await signInWithPopup(auth, googleProvider);
-      console.log('Fazendo login Google');
+      console.log("Fazendo login Google");
     } catch (err: unknown) {
-      if (err instanceof Error) alert(err.message);
+      if (err instanceof Error) setErroMensagem(err.message);
     }
   }
 
@@ -45,8 +52,8 @@ export default function Login() {
       setEmail={setEmail}
       setPassword={setPassword}
       signInGoogle={signInGoogle}
-      user={user}
       loading={loading}
+      erroMensagem={erroMensagem}
     />
   );
 }

@@ -1,4 +1,3 @@
-import type { User } from "firebase/auth";
 import "./styleLogin.css";
 
 interface LoginFormProps {
@@ -6,8 +5,8 @@ interface LoginFormProps {
   setEmail: (email: string) => void;
   setPassword: (password: string) => void;
   signInGoogle: () => void;
-  user: User | null;
   loading: boolean;
+  erroMensagem?: string | null;
 }
 
 export default function LoginForm({
@@ -15,12 +14,11 @@ export default function LoginForm({
   setEmail,
   setPassword,
   signInGoogle,
-  user,
   loading,
+  erroMensagem,
 }: LoginFormProps) {
 
   if (loading) return <p>Carregando...</p>;
-  if (user) return <p>Você já está logado.</p>;
 
   return (
     <form onSubmit={handleLogin} className="loginForm">
@@ -35,6 +33,8 @@ export default function LoginForm({
         placeholder="Senha"
         onChange={(e) => setPassword(e.target.value)}
       />
+
+      {erroMensagem && <span className="erroMensagem">{erroMensagem}</span>}
 
       <button className="loginBotaoPrimeiro">Entrar</button>
 
