@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import "./styleButton.css";
+import "./styleBotaoLogin.css";
 
-export default function LoginButton() {
+export default function BotaoLogin() {
   return (
     <Link href="/login">
       <button className="BotaoLogin">Login</button>

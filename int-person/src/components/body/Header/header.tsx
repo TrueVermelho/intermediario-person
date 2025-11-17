@@ -1,5 +1,6 @@
 "use client";
 
+import BotaoLogin from "@/components/auth/login/BotaoLogin/BotaoLogin";
 import { useEffect } from "react";
 import { MenuController } from "./menuController";
 import "./styleHeader.css";
@@ -24,6 +25,8 @@ export default function Header() {
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
+
+        <BotaoLogin />
 
         <button
           className="menu-button"
