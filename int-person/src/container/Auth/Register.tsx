@@ -1,49 +1,133 @@
 "use client";
 
-import RegisterForm from "@/components/auth/register/RegisterForm";
-import { auth, db } from "@/lib/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { auth, db, googleProvider } from "@/lib/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export default function RegisterPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import "../../components/auth/register/styleRegister.css";
 
+export default function RegisterForm(): ReactNode {
   const router = useRouter();
 
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  // ----------------------------
+  // 🔐 Salvar token no cookie
+  // ----------------------------
+  async function setSessionToken() {
+    try {
+      const token = await auth.currentUser?.getIdToken(true);
+      if (!token) return;
+
+      await fetch("/api/set-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      });
+
+      console.log("Token salvo no cookie!");
+    } catch (err) {
+      console.error("Erro ao salvar token:", err);
+    }
+  }
+
+  // ----------------------------
+  // 📧 Registro com Email
+  // ----------------------------
   async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        email,
-        password
+        form.email,
+        form.password
       );
 
-      // Cria o documento no Firestore
       await setDoc(doc(db, "users", userCredential.user.uid), {
-        name,
-        email,
-        createdAt: new Date().toISOString(),
+        name: form.name,
+        email: form.email,
+        createdAt: serverTimestamp(),
       });
 
-      alert("Conta criada com sucesso!");
-      auth.onAuthStateChanged(() => router.push("/dashboard")); // Redireciona o usuario
+      await setSessionToken();
+      router.push("/dashboard");
+
     } catch (err: unknown) {
-      if (err instanceof Error) alert(err.message);
+      if (err instanceof Error) {
+        console.error("ERRO LOGIN:", err.message);
+      }
+    }
+  }
+
+  // ----------------------------
+  // 🔵 Registro com Google
+  // ----------------------------
+  async function registerWithGoogle() {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
+
+      if (!snap.exists()) {
+        await setDoc(ref, {
+          name: user.displayName || "",
+          email: user.email || "",
+          createdAt: serverTimestamp(),
+        });
+      }
+
+      await setSessionToken();
+      router.push("/dashboard");
+
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("ERRO LOGIN:", err.message);
+      }
     }
   }
 
   return (
-    <RegisterForm
-      handleRegister={handleRegister}
-      setName={setName}
-      setEmail={setEmail}
-      setPassword={setPassword}
-    />
+    <form onSubmit={handleRegister} className="registerForm">
+      <input
+        type="text"
+        placeholder="Nome"
+        className="registerInput"
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        className="registerInput"
+        onChange={(e) => setForm({ ...form, email: e.target.value })}
+      />
+
+      <input
+        type="password"
+        placeholder="Senha"
+        className="registerInput"
+        onChange={(e) => setForm({ ...form, password: e.target.value })}
+      />
+
+      <button type="submit" className="registerBotao">
+        Criar conta
+      </button>
+
+      <button type="button" onClick={registerWithGoogle}>
+        Criar conta com Google
+      </button>
+    </form>
   );
 }

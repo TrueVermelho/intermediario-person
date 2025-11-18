@@ -8,7 +8,6 @@ import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-
 export default function Login() {
   const router = useRouter();
   const { loading } = useAuth();
@@ -17,23 +16,40 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [erroMensagem, setErroMensagem] = useState<string | null>(null);
 
-  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    // Email
+  // -----------------------------
+  // 🔐 Salvar token no cookie via API
+  // -----------------------------
+  async function setSessionToken() {
     try {
-      console.log("Fazendo login Email");
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log("Login OK:", userCredential.user);
+      const token = await auth.currentUser?.getIdToken(true);
+      if (!token) return;
 
-      const token = await userCredential.user.getIdToken();
-
-      // Salva o token em cookie via API
-      await fetch("/api/auth/set-token", {
+      await fetch("/api/set-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token }),
       });
+
+      console.log("Token salvo no cookie!");
+    } catch (err) {
+      console.error("Erro ao salvar token:", err);
+    }
+  }
+
+  // -----------------------------
+  // 📧 Login com Email & Senha
+  // -----------------------------
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    try {
+      console.log("Fazendo login com Email...");
+
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+      console.log("Login OK:", userCredential.user);
+
+      await setSessionToken();
 
       console.log("Indo para dashboard...");
       router.push("/dashboard");
@@ -46,28 +62,44 @@ export default function Login() {
     }
   }
 
+  // -----------------------------
+  // 🔵 Login com Google
+  // -----------------------------
   async function signInGoogle() {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log("Fazendo login Google:", result.user);
+      console.log("Iniciando login com Google...");
 
+      const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      // Verifica se já tem um documento no Firestore
+      console.log("Login Google OK:", user);
+
+      await setSessionToken();
+
+      // Verifica / cria documento no Firestore
       const ref = doc(db, "users", user.uid);
       const snap = await getDoc(ref);
 
       if (!snap.exists()) {
-        await setDoc(ref, {
-          name: user.displayName,
-          email: user.email,
-          createdAt: serverTimestamp(),
-          updatedAt: serverTimestamp(),
-        }, { merge: true });
+        await setDoc(
+          ref,
+          {
+            name: user.displayName || "",
+            email: user.email || "",
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+          },
+          { merge: true }
+        );
       }
+
       router.push("/dashboard");
+
     } catch (err: unknown) {
-      if (err instanceof Error) setErroMensagem(err.message);
+      if (err instanceof Error) {
+        console.error("ERRO GOOGLE LOGIN:", err);
+        setErroMensagem(err.message);
+      }
     }
   }
 
