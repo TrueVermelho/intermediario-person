@@ -2,8 +2,9 @@
 
 import LoginForm from "@/components/auth/login/LoginForm";
 import { useAuth } from "@/hooks/useAuth";
-import { auth, googleProvider } from "@/lib/firebase";
+import { auth, db, googleProvider } from "@/lib/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -19,12 +20,12 @@ export default function Login() {
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // Email
     try {
       console.log("Fazendo login Email");
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("Login OK:", userCredential.user);
 
-      // Pega o token do usuário logado
       const token = await userCredential.user.getIdToken();
 
       // Salva o token em cookie via API
@@ -50,14 +51,20 @@ export default function Login() {
       const result = await signInWithPopup(auth, googleProvider);
       console.log("Fazendo login Google:", result.user);
 
-      const token = await result.user.getIdToken();
+      const user = result.user;
 
-      await fetch("/api/auth/set-token", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token }),
-      });
+      // Verifica se já tem um documento no Firestore
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
 
+      if (!snap.exists()) {
+        await setDoc(ref, {
+          name: user.displayName,
+          email: user.email,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        }, { merge: true });
+      }
       router.push("/dashboard");
     } catch (err: unknown) {
       if (err instanceof Error) setErroMensagem(err.message);
