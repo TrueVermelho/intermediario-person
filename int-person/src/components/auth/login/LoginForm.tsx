@@ -1,6 +1,6 @@
 'use client';
 
-import LoginGoogle from "@/components/auth/google/LoginGoogle";
+import GoogleButton from "@/components/auth/google/LoginGoogle";
 import "./styleLogin.css";
 
 interface LoginFormProps {
@@ -39,7 +39,7 @@ export default function LoginForm({
 
       <button className="loginBotaoPrimeiro">Entrar</button>
 
-      <LoginGoogle />
+      <GoogleButton />
     </form>
   );
 }
