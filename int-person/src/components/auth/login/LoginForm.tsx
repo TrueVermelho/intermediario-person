@@ -1,6 +1,6 @@
 'use client';
 
-import LoginGoogle from "@/components/auth/LoginGoogle/LoginGoogle";
+import LoginGoogle from "@/components/auth/google/LoginGoogle";
 import "./styleLogin.css";
 
 interface LoginFormProps {
