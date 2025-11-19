@@ -1,4 +1,4 @@
-# Caminhos de components utils (0️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ )
+# Caminhos de components utils (0️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ )
 
 ## PASSO 1️⃣🔹 Acesse diretamente os componentes
 
@@ -37,15 +37,26 @@
   <li><a href="./README/02estrutura/03layout.md" target="_blank" rel="noopener noreferrer">03 Layout</a></li>
 </ul>
 
-## PASSO 3️⃣🔹 Security
+## PASSO 3️⃣🔹 Login e Register (Email e Google)
 
-### ⭐ Passos da configuração security
+### ⭐ Configurações do firebase 
 <ul>
-  <li><a href="./int-person/next.config.ts" target="_blank" rel="noopener noreferrer">01 headers HTTP</a></li>
-  <li><a href="./int-person/src/proxy.ts" target="_blank" rel="noopener noreferrer">02 Proxy - middleware</a></li>
-  <li><a href="./int-person/src/app/api/login/route.ts" target="_blank" rel="noopener noreferrer">03 Token JWT</a></li>
-  <li><a href="" target="_blank" rel="noopener noreferrer">04 Bcrypt</a></li>
+  <li><a href="./int-person/src/lib/firebase.ts" target="_blank" rel="noopener noreferrer">Firebase Config</a></li>
+  <li><a href="./int-person/src/hooks/useAuth.ts" target="_blank" rel="noopener noreferrer">Hook de Auth</a></li>
+  <li><a href="./int-person/src/lib-server/security/ProtectedRoute.tsx" target="_blank" rel="noopener noreferrer">ProtectedRoute (Proteção de Rotas)</a></li>
 </ul>
+
+### ⭐ AuthRegister e RegisterForm 
+<ul>
+  <li><a href="./int-person/src/container/Auth/Register.tsx" target="_blank" rel="noopener noreferrer">Auth - Register</a></li>
+  <li><a href="./int-person/src/components/auth/register/RegisterForm.tsx" target="_blank" rel="noopener noreferrer">Formulário - Register</a></li>
+  <li><a href="./int-person/src/container/Auth/Login.tsx" target="_blank" rel="noopener noreferrer">Auth - Login</a></li>
+  <li><a href="./int-person/src/components/auth/login/LoginForm.tsx" target="_blank" rel="noopener noreferrer">Formulário - Login</a></li>
+  <li><a href="./int-person/src/components/auth/google/LoginGoogle.tsx" target="_blank" rel="noopener noreferrer">Login - Google</a></li>
+  <li><a href="./int-person/src/components/auth/logout/LogoutButton.tsx" target="_blank" rel="noopener noreferrer">Botão de Logout</a></li>
+</ul>
+
+## PASSO 4️⃣🔹 Segurança
 
 ### ⭐ Validadores de segurança
 <ul>
