@@ -8,33 +8,29 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Register() {
+  const router = useRouter();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const router = useRouter();
 
   async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      const user = res.user;
 
-      await setDoc(doc(db, "users", userCredential.user.uid), {
+      await setDoc(doc(db, "users", user.uid), {
         name,
         email,
         createdAt: serverTimestamp(),
       });
 
-      alert("Conta criada com sucesso!");
-
       router.push("/dashboard");
     } catch (err: unknown) {
-      if (err instanceof Error) alert(err.message);
+      console.error(err);
+      alert(err);
     }
   }
 

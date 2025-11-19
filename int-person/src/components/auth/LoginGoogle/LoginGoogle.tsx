@@ -1,7 +1,8 @@
 "use client";
 
-import { auth, googleProvider } from "@/lib/firebase";
+import { auth, db, googleProvider } from "@/lib/firebase";
 import { signInWithPopup } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -16,11 +17,37 @@ export default function LoginGoogle() {
   async function handleGoogle() {
     try {
       setLoading(true);
+
+      // Faz login com Google
       const result = await signInWithPopup(auth, googleProvider);
-      console.log('user logado', result.user);
-      router.push('/dashboard');
+      const user = result.user;
+
+      console.log("user logado", user);
+
+      // Referência do documento do usuário
+      const userRef = doc(db, "users", user.uid);
+
+      // Verifica se já existe
+      const snapshot = await getDoc(userRef);
+
+      if (!snapshot.exists()) {
+        // Cria novo documento no Firestore
+        await setDoc(userRef, {
+          name: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          createdAt: new Date().toISOString(),
+        });
+        console.log("Usuário registrado no Firestore!");
+      } else {
+        console.log("Usuário já existe no Firestore.");
+      }
+
+      router.push("/dashboard");
     } catch (err) {
-      console.log(err)
+      console.error("Erro no login Google:", err);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -37,7 +64,11 @@ export default function LoginGoogle() {
     >
       <motion.div
         animate={{ rotate: loading ? 360 : 0 }}
-        transition={{ duration: 1, repeat: loading ? Infinity : 0, ease: "linear" }}
+        transition={{
+          duration: 1,
+          repeat: loading ? Infinity : 0,
+          ease: "linear",
+        }}
       >
         <FcGoogle size={22} />
       </motion.div>

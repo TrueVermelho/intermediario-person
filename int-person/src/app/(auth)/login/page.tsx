@@ -1,3 +1,5 @@
+'use client';
+
 import Login from "@/container/Auth/Login";
 
 export default function LoginPage() {

@@ -1,3 +1,5 @@
+'use client';
+
 import "./styleRegister.css";
 
 interface RegisterFormProps {
