@@ -5,14 +5,21 @@ import { signInWithPopup } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
+import { useAuth } from "@/hooks/useAuth";
 import "./styleGoogle.css";
 
 export default function GoogleButton() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const { user } = useAuth();
+  // Se o usuário já estiver logado → redireciona
+  useEffect(() => {
+    if (user) router.push("/dashboard");
+  }, [user, router]);
 
   async function handleGoogle() {
     try {
@@ -28,7 +35,6 @@ export default function GoogleButton() {
         lastLogin: serverTimestamp(),
       });
 
-      if (user) return router.push("/dashboard");
     } catch (err: unknown) {
       console.error("Erro login Google:", err);
       alert("Não foi possível logar com Google. Tente novamente.");
