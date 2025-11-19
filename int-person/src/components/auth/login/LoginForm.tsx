@@ -1,3 +1,5 @@
+'use client';
+
 import LoginGoogle from "@/components/auth/LoginGoogle/LoginGoogle";
 import "./styleLogin.css";
 
