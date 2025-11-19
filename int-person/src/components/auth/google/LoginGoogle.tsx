@@ -1,7 +1,8 @@
 "use client";
 
-import { auth, googleProvider } from "@/lib/firebase";
+import { auth, db, googleProvider } from "@/lib/firebase";
 import { signInWithPopup } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,17 +11,27 @@ import { FcGoogle } from "react-icons/fc";
 import "./styleGoogle.css";
 
 export default function GoogleButton() {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   async function handleGoogle() {
     try {
       setLoading(true);
-      await signInWithPopup(auth, googleProvider);
-      router.push("/dashboard");
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      // Cria ou atualiza o usuário no Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        lastLogin: serverTimestamp(),
+      });
+
+      router.push("/dashboard"); // Redireciona após login
     } catch (err: unknown) {
-      console.error(err);
-      alert("Erro ao entrar com Google");
+      console.error("Erro login Google:", err);
+      alert("Não foi possível logar com Google. Tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -32,9 +43,6 @@ export default function GoogleButton() {
       disabled={loading}
       whileHover={{ scale: 1.07 }}
       whileTap={{ scale: 0.95 }}
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 10 }}
-      transition={{ duration: 0.25 }}
       className="loginGoogle"
     >
       <motion.div
@@ -47,7 +55,6 @@ export default function GoogleButton() {
       >
         <FcGoogle size={22} />
       </motion.div>
-
       {loading ? "Entrando..." : "Entrar com Google"}
     </motion.button>
   );

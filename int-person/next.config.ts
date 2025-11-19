@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-
+/*
 const csp = [
   "default-src 'self'",
   "img-src 'self' data: blob: https://*.google.com https://*.gstatic.com https://i.ytimg.com https://*.youtube.com",
@@ -8,9 +8,10 @@ const csp = [
   "font-src 'self' https://fonts.gstatic.com",
   "object-src 'none'",
   "base-uri 'self'",
-  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://*.google.com https://maps.google.com",
+  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://*.google.com https://maps.google.com https://accounts.google.com",
   "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.youtube.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com",
 ].join("; ");
+*/
 
 const nextConfig: NextConfig = {
   // compiler: {styledComponents: true,},
@@ -28,7 +29,7 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
-          { key: "Content-Security-Policy", value: csp },
+          //{ key: "Content-Security-Policy", value: csp },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
           { key: "X-Content-Type-Options", value: "nosniff" },
