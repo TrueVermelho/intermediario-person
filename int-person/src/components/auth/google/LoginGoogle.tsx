@@ -28,7 +28,7 @@ export default function GoogleButton() {
         lastLogin: serverTimestamp(),
       });
 
-      router.push("/dashboard"); // Redireciona após login
+      if (user) return router.push("/dashboard");
     } catch (err: unknown) {
       console.error("Erro login Google:", err);
       alert("Não foi possível logar com Google. Tente novamente.");
