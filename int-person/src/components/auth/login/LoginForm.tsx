@@ -1,10 +1,10 @@
+import LoginGoogle from "@/components/auth/LoginGoogle/LoginGoogle";
 import "./styleLogin.css";
 
 interface LoginFormProps {
   handleLogin: (e: React.FormEvent<HTMLFormElement>) => void;
   setEmail: (email: string) => void;
   setPassword: (password: string) => void;
-  signInGoogle: () => void;
   loading: boolean;
   erroMensagem?: string | null;
 }
@@ -13,7 +13,6 @@ export default function LoginForm({
   handleLogin,
   setEmail,
   setPassword,
-  signInGoogle,
   loading,
   erroMensagem,
 }: LoginFormProps) {
@@ -38,13 +37,7 @@ export default function LoginForm({
 
       <button className="loginBotaoPrimeiro">Entrar</button>
 
-      <button
-        type="button"
-        onClick={signInGoogle}
-        className="loginBotaoSegundo"
-      >
-        Entrar com Google
-      </button>
+      <LoginGoogle />
     </form>
   );
 }

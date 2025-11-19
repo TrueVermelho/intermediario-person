@@ -11,6 +11,9 @@ export async function middleware(req: NextRequest) {
   }
 
   try {
+    const res = NextResponse.next();
+    res.headers.set("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+    res.headers.set("Cross-Origin-Embedder-Policy", "unsafe-none");
     const decoded = await adminAuth.verifyIdToken(token);
 
     // Custom Claim: precisa existir no Firebase
@@ -21,7 +24,7 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/403", req.url));
     }
 
-    return NextResponse.next();
+    return res;
   } catch (err) {
     console.error("TOKEN INVALIDO:", err);
     return NextResponse.redirect(new URL("/login", req.url));

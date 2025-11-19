@@ -2,8 +2,8 @@
 
 import LoginForm from "@/components/auth/login/LoginForm";
 import { useAuth } from "@/hooks/useAuth";
-import { auth, googleProvider } from "@/lib/firebase";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -44,31 +44,11 @@ export default function Login() {
     }
   }
 
-  async function signInGoogle() {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log("Fazendo login Google:", result.user);
-
-      const token = await result.user.getIdToken();
-
-      await fetch("/api/auth/set-token", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token }),
-      });
-
-      router.push("/dashboard");
-    } catch (err: unknown) {
-      if (err instanceof Error) setErroMensagem(err.message);
-    }
-  }
-
   return (
     <LoginForm
       handleLogin={handleLogin}
       setEmail={setEmail}
       setPassword={setPassword}
-      signInGoogle={signInGoogle}
       loading={loading}
       erroMensagem={erroMensagem}
     />
