@@ -1,4 +1,4 @@
-# 📘 Next.js 16 + Firebase Auth (Email/Senha + Google)
+# 📘 Firebase Auth (Email/Senha + Google)
 
 Guia completo e atualizado para implementar **login**, **registro**, **Google OAuth**, **logout** e **proteção de rotas** no **Next.js 16+** usando apenas o **Firebase Auth**, sem tokens, sem APIs e sem backend.
 
@@ -16,27 +16,28 @@ Guia completo e atualizado para implementar **login**, **registro**, **Google OA
 > - `signInWithPopup`
 >     
 > - `signOut`
->     
+
+> [!WARNING]
+> # **INTALL: `npm install firebase`**
 
 ---
 
 # 📁 Estrutura Completa do Projeto
 
 ```
-PROJECT ROOT
+PROJECT ROOT (src/)
 │
 ├── app/
-│   ├── login/
-│   │   └── page.tsx
-│   │
-│   ├── register/
-│   │   └── page.tsx
-│   │
 │   ├── dashboard/
 │   │   ├── layout.tsx         ← Protege rota
-│   │   └── page.tsx
-│   │
-│   └── globals.css
+│   │   ├── page.tsx
+│   │   │
+│	└── (auth)/
+│       ├── login/
+│       │   └── page.tsx
+│       │
+│       └── register/
+│           └── page.tsx
 │
 │
 ├── components/
@@ -64,7 +65,7 @@ PROJECT ROOT
 │
 ├── lib/
 │   └── firebase.ts
-├── lib-server/security/ProtectedRoute.tsx  ← Protege rota
+├── lib-server/security/ProtectedRoute.tsx
 ```
 
 ---
@@ -92,6 +93,18 @@ export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 ```
+
+> [!EXAMPLE]
+> ## **`.env.local`**
+> 
+> ```
+> NEXT_PUBLIC_FIREBASE_API_KEY=xxxx
+> NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=xxxx
+> NEXT_PUBLIC_FIREBASE_PROJECT_ID=xxxx
+> NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=xxxx
+> NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=xxxx
+> NEXT_PUBLIC_FIREBASE_APP_ID=xxxx
+> ```
 
 ---
 
@@ -170,6 +183,19 @@ export default function DashboardLayout({
   return <ProtectedRoute>{children}</ProtectedRoute>;
 }
 ```
+```tsx
+// Proteção direto na page Dashboard
+"use client";
+import { useAuth } from "@/hooks/useAuth";
+
+export default function DashboardPage() {
+  const user = useAuth();
+
+  if (!user) return <p>Você não está logado.</p>;
+
+  return <h1>Bem-vindo {user.email}</h1>;
+}
+```
 
 > Componente util para usar antes dos **handle** que automaticamente ao **logar/registrar** te leva para a **rota** desejada.
 
@@ -243,7 +269,7 @@ export default function Register() {
 ```
 
 ```tsx
-// src/coomponents/auth/register/RegisterForm.tsx
+// src/components/auth/register/RegisterForm.tsx
 'use client';
 
 import "./styleRegister.css";
@@ -509,3 +535,35 @@ export default function LogoutButton() {
 ```
 
 ---
+
+# 📃 **9. Páginas de Login / Registro**
+
+> [!EXAMPLE]
+> ## 📁 **`app/(auth)/login/page.tsx`**
+
+```tsx
+import Login from "@/container/Auth/Login";
+
+export default function LoginPage() {
+  return (
+    <section>
+      <Login />
+    </section>
+  );
+}
+```
+
+> [!EXAMPLE]
+> ## 📁 **`app/(auth)/register/page.tsx`**
+
+```tsx
+import Register from "@/container/Auth/Register";
+
+export default function RegisterPage() {
+  return (
+    <section>
+      <Register />
+    </section>
+  );
+}
+```
