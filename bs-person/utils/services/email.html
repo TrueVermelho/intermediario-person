@@ -1,0 +1,163 @@
+<!-- Email -->
+<form class="formEmail" action="https://formsubmit.co/seuemail@gmail.com" method="POST">
+  <h2 class="titleEmail">Fale Comigo</h2>
+  
+  <input class="nameEmail" type="text" name="name" placeholder="Seu nome" required>
+  <input class="textEmail" type="email" name="email" placeholder="Seu e-mail" required>
+  <textarea class="areaTextEmail" name="message" placeholder="Digite sua mensagem..." required></textarea>
+  <button class="buttonEmail" type="submit">Enviar Mensagem</button>
+
+  <!-- Segurança e redirecionamento -->
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://seusite.github.io/obrigado.html">
+</form>
+
+<!-- ⚠️ AVISO OBRIGATÓRIO PARA FUNCIONAR O FORMULÁRIO DE EMAIL ⚠️
+  1. Troque o email certo em action=""
+  2. Crie a página obrigado.html e coloque o link certo em _next=""
+  3. O email só funciona se estiver hospedado ou run server localmente
+  4. Teste e confirme o formsubmit no email do action
+-->
+
+<style>
+  .formEmail {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .titleEmail {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .nameEmail, .textEmail, .areaTextEmail {
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s border-color, 0.3s box-shadow;
+  }
+
+  .nameEmail:focus, .textEmail:focus, .areaTextEmail:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+  }
+
+  .areaTextEmail {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .buttonEmail {
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s background, 0.3s transform;
+  }
+
+  .buttonEmail:hover {
+    background: #43a047;
+    transform: scale(1.03);
+  }
+
+  .buttonEmail:active {
+    transform: scale(0.98);
+  }
+
+  /* ======== Responsivo ======== */
+
+  /* Telas grandes (≥1024px) */
+  @media (min-width: 1024px) {
+    .formEmail {
+      max-width: 500px;
+      padding: 40px;
+    }
+    .titleEmail {
+      font-size: 26px;
+    }
+    .nameEmail, .textEmail, .areaTextEmail {
+      font-size: 16px;
+    }
+    .buttonEmail {
+      font-size: 17px;
+    }
+  }
+
+  /* Telas médias (~760px) */
+  @media (max-width: 1024px) and (min-width: 761px) {
+    .formEmail {
+      max-width: 420px;
+      padding: 30px;
+    }
+    .titleEmail {
+      font-size: 22px;
+    }
+    .nameEmail, .textEmail, .areaTextEmail {
+      font-size: 15px;
+      padding: 11px;
+    }
+    .buttonEmail {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+
+  /* Telas pequenas (~360px) */
+  @media (max-width: 760px) {
+    .formEmail {
+      max-width: 95%;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .titleEmail {
+      font-size: 20px;
+    }
+    .nameEmail, .textEmail, .areaTextEmail {
+      font-size: 14px;
+      padding: 10px;
+    }
+    .areaTextEmail {
+      min-height: 80px;
+    }
+    .buttonEmail {
+      font-size: 15px;
+      padding: 10px;
+    }
+  }
+
+  /* Telas extra-pequenas (≤360px) */
+  @media (max-width: 360px) {
+    .formEmail {
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .titleEmail {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .nameEmail, .textEmail, .areaTextEmail {
+      font-size: 13px;
+      padding: 9px;
+    }
+    .buttonEmail {
+      font-size: 14px;
+      padding: 9px;
+    }
+  }
+</style>

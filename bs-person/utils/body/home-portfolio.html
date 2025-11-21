@@ -1,0 +1,164 @@
+<!--===== HOME PORTFOLIO =====-->
+<section class="home section background" id="home">
+  <div class="overlay"></div>
+
+  <div class="home-content">
+    <div class="profile-img">
+      <img src="./img/perfil.png" alt="Foto de Perfil">
+    </div>
+
+    <h1>Olá, eu sou <span>NAME XXX</span></h1>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Quis maxime provident similique consectetur rem libero 
+      earum mollitia, eius accusantium error delectus cumque, 
+      totam cum natus adipisci officiis repellendus eum ducimus?
+    </p>
+
+    <div class="home-buttons">
+      <a href="#portfolio" class="botao-home-primary">Ver Portfólio</a>
+      <a 
+        href="https://wa.me/5599999999999?text=Olá!%20Tenho%20interesse%20no%20Plano%20Básico%20do%20site." 
+        class="botao-home-secondary" 
+        target="_blank">
+        Assinar Agora
+       </a>
+    </div>
+   </div>
+</section>
+
+<style>
+/* ===== HOME ===== */
+.home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Imagem de perfil */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #4CAF50;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Textos */
+.home-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.home-content h1 span {
+  color: #4CAF50;
+}
+
+.home-content h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.home-content p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+/* Botões */
+.home-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.botao-home-primary,
+.botao-home-secondary {
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.botao-home-primary {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.botao-home-primary:hover {
+  background: #43a047;
+  transform: scale(1.05);
+}
+
+.botao-home-secondary {
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.botao-home-secondary:hover {
+  background: #4CAF50;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===== ANIMAÇÃO ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .home {
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .home-content h1 {
+    font-size: 2rem;
+  }
+
+  .home-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+  }
+
+  .botao-home-primary,
+  .botao-home-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+}
+</style>

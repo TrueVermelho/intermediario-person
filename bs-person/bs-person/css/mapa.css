@@ -1,0 +1,57 @@
+.mapSection {
+  width: 100%;
+  background: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.titleMap {
+  margin-bottom: 20px;
+  color: #222;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 600;
+}
+
+/* Wrapper mantém a proporção do mapa e garante responsividade */
+.mapWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  /* proporção 16:9 */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.googleMap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transition: transform 0.3s ease;
+}
+
+.googleMap:hover {
+  transform: scale(1.02);
+}
+
+.mapDescription {
+  margin-top: 20px;
+  color: white;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.5;
+}
+
+/* Melhor ajuste para telas pequenas */
+@media (max-width: 600px) {
+  .mapSection {
+    padding: 20px 10px;
+  }
+
+  .mapWrapper {
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,164 @@
+<!--===== DOWNLOAD DO PORTFÓLIO =====-->
+<a 
+  href="./portfolio.pdf" 
+  class="buttonDownload" 
+  download
+  onclick="window.print()">
+  📄 Baixar / Imprimir Portfólio
+</a>
+
+<style>
+.buttonDownload {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #4CAF50;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s background, 0.3s transform, 0.3s box-shadow;
+}
+
+.buttonDownload:hover {
+  background: #43a047;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(76,175,80,0.4);
+}
+
+.buttonDownload:active {
+  transform: scale(0.97);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+  .buttonDownload {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+  .buttonDownload {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
+
+/* ===== MODO DE IMPRESSÃO CONFIGURAÇÕES ===== */
+@media print {
+
+  /* Remove botões, menus e elementos visuais que não devem aparecer no PDF */
+  .header,
+  .nav,
+  .footer,
+  .buttonDownload,
+  .botao-home-secondary,
+  .video-section {
+    display: none !important;
+  }
+
+  /* Redefine layout geral */
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-family: Arial, sans-serif !important;
+    width: 100% !important;
+  }
+
+  /* Remove espaçamento vertical entre seções */
+  section {
+    display: block !important;
+    margin: 0 !important;
+    padding: 10px 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* Remove qualquer definição de altura ou espaçamento forçado */
+  .section,
+  .home,
+  .sobre,
+  .servicos,
+  .contato {
+    min-height: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 10px 0 !important;
+  }
+
+  /* Impede quebras manuais */
+  section,
+  div,
+  article {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    page-break-inside: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+    break-inside: auto !important;
+  }
+
+  /* Remove sombras, bordas e fundos */
+  * {
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+  }
+}
+
+/* ===== MODO DE IMPRESSÃO NOVO ESTILO===== */
+@media print {
+
+  /* Centraliza o conteúdo principal */
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #000;
+  }
+
+  /* Ajusta imagens */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Remove sombras e bordas que atrapalham na impressão */
+  * {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Título e texto centralizados */
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+    color: #000;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+}
+</style>

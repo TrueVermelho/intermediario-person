@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exemplo de Formulário Completo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+
+    form {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: auto;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    hr {
+      margin: 25px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulário Completo de Exemplo</h1>
+  <form>
+
+    <!-- Campos de texto -->
+    <div class="form-group">
+      <label for="nome">Texto (Nome):</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+    </div>
+
+    <!-- email -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="exemplo@dominio.com">
+    </div>
+
+    <!-- senha -->
+    <div class="form-group">
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+    </div>
+
+    <!-- telefone -->
+    <div class="form-group">
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999">
+    </div>
+
+    <!-- url -->
+    <div class="form-group">
+      <label for="url">URL:</label>
+      <input type="url" id="url" name="url" placeholder="https://...">
+    </div>
+
+    <!-- número -->
+    <div class="form-group">
+      <label for="numero">Número:</label>
+      <input type="number" id="numero" name="numero" min="0" max="100">
+    </div>
+
+    <!-- range -->
+    <div class="form-group">
+      <label for="range">Range (0 a 100):</label>
+      <input type="range" id="range" name="range" min="0" max="100" step="25"> <!-- step= de 25 em 25 -->
+    </div>
+
+    <!-- data -->
+    <div class="form-group">
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data">
+    </div>
+
+    <!-- hora -->
+    <div class="form-group">
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora">
+    </div>
+
+    <!-- data e hora -->
+    <div class="form-group">
+      <label for="datetime">Data e Hora:</label>
+      <input type="datetime-local" id="datetime" name="datetime">
+    </div>
+
+    <!-- mes -->
+    <div class="form-group">
+      <label for="mes">Mês:</label>
+      <input type="month" id="mes" name="mes">
+    </div>
+
+    <!-- semana -->
+    <div class="form-group">
+      <label for="semana">Semana:</label>
+      <input type="week" id="semana" name="semana">
+    </div>
+
+    <!-- arquivo -->
+    <div class="form-group">
+      <label for="arquivo">Arquivo:</label>
+      <input type="file" id="arquivo" name="arquivo" 
+      accept=".png, .jpg, .jpeg, .pdf">
+    </div>
+
+    <hr>
+
+    <!-- Botões de opção -->
+    <div class="form-group">
+      <label>Gênero:</label>
+      <input type="radio" id="masc" name="genero" value="masculino">
+      <label for="masc">Masculino</label>
+      <input type="radio" id="fem" name="genero" value="feminino">
+      <label for="fem">Feminino</label>
+      <input type="radio" id="outro" name="genero" value="outro">
+      <label for="outro">Outro</label>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="form-group">
+      <label>Interesses:</label>
+      <input type="checkbox" id="musica" name="interesses" value="musica">
+      <label for="musica">Música</label>
+      <input type="checkbox" id="esportes" name="interesses" value="esportes">
+      <label for="esportes">Esportes</label>
+      <input type="checkbox" id="tecnologia" name="interesses" value="tecnologia">
+      <label for="tecnologia">Tecnologia</label>
+    </div>
+
+    <!-- Seleção -->
+    <div class="form-group">
+      <label for="pais">Seleção (Select):</label>
+      <select id="pais" name="pais">
+        <option value="">Selecione um país</option>
+        <option value="brasil">Brasil</option>
+        <option value="eua">Estados Unidos</option>
+        <option value="portugal">Portugal</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="cores">Seleção múltipla:</label>
+      <select id="cores" name="cores" multiple>
+        <option value="vermelho">Vermelho</option>
+        <option value="azul">Azul</option>
+        <option value="verde">Verde</option>
+      </select>
+    </div>
+
+    <!-- Cor -->
+    <div class="form-group">
+      <label for="cor">Cor favorita:</label>
+      <input type="color" id="cor" name="cor">
+    </div>
+
+    <!-- Texto longo -->
+    <div class="form-group">
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="4" placeholder="Digite sua mensagem aqui..."></textarea>
+    </div>
+
+    <!-- Campo oculto -->
+    <input type="hidden" name="id_usuario" value="12345">
+
+    <!-- Botões -->
+    <hr>
+    <div class="form-group">
+      <button type="submit">Enviar</button>
+      <button type="reset">Limpar</button>
+    </div>
+
+  </form>
+</body>
+</html>

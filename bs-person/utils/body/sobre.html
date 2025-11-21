@@ -1,0 +1,179 @@
+<!--======= SOBRE =======-->
+<section id="sobre" class="section">
+  <div class="sobre-container">
+    <div class="sobre-conteudo">
+      <div class="sobre-texto">
+        <h2>Sobre o Projeto</h2>
+        <p>
+          Este site foi criado com o objetivo de compartilhar conhecimento e experiências sobre 
+          desenvolvimento web, design moderno e tecnologias digitais. A ideia é transformar ideias 
+          em soluções criativas e acessíveis, inspirando outras pessoas a aprender e construir.
+        </p>
+        <p>
+          Aqui você encontrará conteúdos sobre HTML, CSS, JavaScript e muito mais, sempre com exemplos 
+          práticos e explicações simples. O foco é ajudar quem está começando e mostrar que qualquer 
+          um pode criar algo incrível na web.
+        </p>
+      </div>
+
+      <div class="sobre-imagem">
+        <img src="https://via.placeholder.com/400x250" alt="Imagem sobre o projeto">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===== CORREÇÃO PRINCIPAL ===== */
+#sobre.section {
+  min-height: auto;
+  padding: 0;
+}
+
+/* ===== CONTAINER ===== */
+.sobre-container {
+  width: 100%;
+  max-width: 70%;
+  margin: 60px auto;
+  padding: 50px 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== CONTEÚDO FLEX ===== */
+.sobre-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ===== TEXTO ===== */
+.sobre-texto {
+  flex: 1 1 400px;
+}
+
+.sobre-texto h2 {
+  color: #222;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sobre-texto p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+/* ===== IMAGEM ===== */
+.sobre-imagem {
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+.sobre-imagem img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1024px) {
+  .sobre-container {
+    max-width: 80%;
+    padding: 40px 20px;
+  }
+  .sobre-texto h2 {
+    font-size: 1.8rem;
+  }
+  .sobre-texto p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre-container {
+    padding: 30px 20px;
+  }
+  .sobre-conteudo {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sobre-imagem {
+    order: -1; /* imagem acima do texto */
+  }
+  .sobre-texto p {
+    text-align: center;
+  }
+  .sobre-texto h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .sobre-container {
+    max-width: 70%;
+    margin: 20px auto;
+    padding: 20px 10px;
+  }
+  .sobre-texto h2 {
+    font-size: 1.4rem;
+  }
+  .sobre-texto p {
+    font-size: 0.95rem;
+  }
+}
+/* ===== PRINT MEDIA SOBRE ===== */
+@media print {
+  .sobre.section {
+    margin: 0 !important;
+    padding: 10px !important;
+    background: none !important;
+    min-height: auto !important;
+  }
+
+  .sobre-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 5px !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    font-size: 12pt !important;
+  }
+
+  .sobre-conteudo {
+    display: block !important;
+    text-align: left !important;
+    gap: 0 !important;
+  }
+
+  .sobre-texto {
+    flex: none !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+
+  .sobre-texto h2 {
+    font-size: 16pt !important;
+    margin-bottom: 8px !important;
+    text-align: left !important;
+    font-weight: bold !important;
+  }
+
+  .sobre-texto p {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+    text-align: justify !important;
+  }
+}
+</style>

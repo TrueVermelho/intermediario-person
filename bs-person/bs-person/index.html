@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <!-- SEO deixa bonito ao compartilhar -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Portfólio - Seu Nome">
+  <meta property="og:description" content="Desenvolvimento de sites e portfólios personalizados.">
+  <meta property="og:image" content="https://seusite.github.io/img/banner.jpg">
+  <meta name="theme-color" content="#111111">
+
+  <!-- SEO básico -->
+  <title>Minha Empresa - Site Oficial</title>
+  <meta name="description" content="Site profissional para sua empresa com design moderno e responsivo." />
+  <!-- CSS -->
+  <link rel="stylesheet" href="style-geral.css"/>
+  <link rel="stylesheet" href="css/style-background.css"/>
+  <link rel="stylesheet" href="css/header.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/sobre.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+
+  <link rel="stylesheet" href="css/youtube.css"/>
+  <link rel="stylesheet" href="css/cards.css"/>
+  <link rel="stylesheet" href="css/contato.css"/>
+  <link rel="stylesheet" href="css/email.css"/>
+  <link rel="stylesheet" href="css/mapa.css"/>
+  <link rel="stylesheet" href="css/botao-media-print.css"/> <!-- Tem que ficar por ultimo -->
+  <!--JS-->
+  <script defer src="js/script.js"></script>
+  <link rel="icon" href="https://www.svgrepo.com/show/530661/genetic-data.svg" type="image/png" />
+</head>
+
+<body>
+  <!--===== HEADER NAVBAR =====-->
+  <header class="header background">
+    <div class="header-container">
+      <!-- Logo -->
+      <h1 class="logo">LOGO</h1>
+      <!-- Menu -->
+      <nav class="nav" id="navMenu">
+        <ul>
+          <li><a href="#home">INÍCIO</a></li>
+          <li><a href="#sobre">ABOUT</a></li>
+          <li><a href="#servicos">SERVIÇOS</a></li>
+          <li><a href="#contato">CONTATO</a></li>
+        </ul>
+      </nav>
+      <!-- Botão Mobile -->
+      <button class="menuToggle" data-target="navMenu" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+  </header>
+
+  <!--===== HEADER HOME =====-->
+  <section class="home section background" id="home">
+    <div class="overlay"></div>
+
+    <div class="home-content">
+      <div class="profile-img">
+        <img 
+          src="https://cdn.pixabay.com/photo/2025/10/14/15/49/leaf-9894303_1280.jpg" 
+          alt="Foto de Perfil"
+        />
+      </div>
+
+      <h1>Olá, eu sou <span>NAME XXX</span></h1>
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Quis maxime provident similique consectetur rem libero 
+        earum mollitia, eius accusantium error delectus cumque, 
+        totam cum natus adipisci officiis repellendus eum ducimus?
+      </p>
+
+      <div class="home-buttons">
+        <a 
+          href="#home" 
+          class="buttonDownload" 
+          download
+          onclick="window.print()">
+          Baixar Portfólio
+        </a>
+        <a 
+          href="https://wa.me/5599999999999?text=Olá!%20Tenho%20interesse%20no%20Plano%20Básico%20do%20site." 
+          class="botao-home-secondary" 
+          target="_blank">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!--======= SOBRE =======-->
+  <section id="sobre" class="sobre section">
+    <section class="sobre-container">
+      <div class="sobre-conteudo">
+        <div class="sobre-texto">
+          <h2>Sobre o Projeto</h2>
+          <p>
+            Este site foi criado com o objetivo de compartilhar conhecimento e experiências sobre 
+            desenvolvimento web, design moderno e tecnologias digitais. A ideia é transformar ideias 
+            em soluções criativas e acessíveis, inspirando outras pessoas a aprender e construir.
+          </p>
+          <p>
+            Aqui você encontrará conteúdos sobre HTML, CSS, JavaScript e muito mais, sempre com exemplos 
+            práticos e explicações simples. O foco é ajudar quem está começando e mostrar que qualquer 
+            um pode criar algo incrível na web.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  <!-- YouTube -->
+  <div class="video-section">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+        title="Título do Vídeo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+  </section>
+
+  <!-- ===== SERVIÇOS ===== -->
+<section class="venda background" id="servicos">
+  <div class="cardsContainer">
+    <div class="cardVenda">
+      <div class="cardImagem">
+        <img 
+          src="https://cdn.pixabay.com/photo/2025/10/14/15/49/leaf-9894303_1280.jpg" 
+          alt="Plano Básico"
+        />
+      </div>
+      <div class="cardConteudo">
+        <h3>Plano Básico</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, 
+          adipisicing elit. Maxime esse provident odio, 
+          dolor aliquam dicta veritatis harum voluptatibus, 
+          nostrum omnis inventore dignissimos voluptatem obcaecati? 
+          Cupiditate nostrum ea animi repudiandae molestias.
+        </p>
+        <ul class="cardLista">
+          <li>✔ 1 página personalizada</li>
+          <li>✔ Domínio e hospedagem</li>
+          <li>✔ Formulário de contato</li>
+          <li>✔ lorem ipsum todo dia</li>
+        </ul>
+
+        <div class="cardPreco">
+          <span class="preco">R$ 59<span>/mês</span></span>
+        </div>
+        
+        <a 
+          href="https://wa.me/5599999999999?text=Olá!%20Tenho%20interesse%20no%20Plano%20Básico%20do%20site." 
+          class="btnCard" 
+          target="_blank">
+          Assinar Agora
+        </a>
+      </div>
+    </div>
+    <div class="cardVenda">
+      <div class="cardImagem">
+        <img 
+          src="https://cdn.pixabay.com/photo/2025/10/14/15/49/leaf-9894303_1280.jpg" 
+          alt="Plano Básico"
+        />
+      </div>
+      <div class="cardConteudo">
+        <h3>Plano lorem</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, 
+          adipisicing elit. Maxime esse provident odio, 
+          dolor aliquam dicta veritatis harum voluptatibus, 
+          nostrum omnis inventore dignissimos voluptatem obcaecati? 
+          Cupiditate nostrum ea animi repudiandae molestias.
+        </p>
+        <ul class="cardLista">
+          <li>✔ 1 página personalizada</li>
+          <li>✔ Domínio e hospedagem</li>
+          <li>✔ Formulário de contato</li>
+          <li>✔ lorem ipsum todo dia</li>
+        </ul>
+
+        <div class="cardPreco">
+          <span class="preco">R$ 59<span>/mês</span></span>
+        </div>
+        
+        <a 
+          href="https://wa.me/5599999999999?text=Olá!%20Tenho%20interesse%20no%20Plano%20Básico%20do%20site." 
+          class="btnCard" 
+          target="_blank">
+          Assinar Agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!--===== CONTATO =====-->
+  <section id="contato" class="contato section">
+    <h2>Entre em Contato</h2>
+
+    <!-- Link contatos -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/seuusuario" class="instagram" target="_blank">Instagram</a>
+      <a href="https://wa.me/5599999999999?text=Olá!%20Tenho%20interesse%20no%20Plano%20Básico%20do%20site." class="WhatsApp" target="_blank">WhatsApp</a>
+      <a href="https://www.youtube.com/@seuusuario" class="youtube" target="_blank">YouTube</a>
+    </div>
+    
+    <!-- Email -->
+    <form class="formEmail" action="https://formsubmit.co/teste@gmail.com" method="POST">
+      <h2 class="titleEmail">Fale Comigo</h2>
+      
+      <input class="nameEmail" type="text" name="name" placeholder="Seu nome" required>
+      <input class="textEmail" type="email" name="email" placeholder="Seu e-mail" required>
+      <textarea class="areaTextEmail" name="message" placeholder="Digite sua mensagem..." required></textarea>
+      
+      <button class="buttonEmail" type="submit">Enviar Mensagem</button>
+
+      <!-- Segurança e redirecionamento -->
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://site-exemplo.github.io/obrigado.html">
+    </form>
+  </section>
+
+  <!--===== Mapa Google =====-->
+    <section class="mapSection background">
+      <h2 class="titleMap">Encontre-nos</h2>
+
+      <div class="mapWrapper">
+        <iframe
+          class="googleMap"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.8613038966993!2d-46.66224808502111!3d-23.57707396885145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d9d13b1b6b%3A0x9c4e2b72f1a7289d!2sPaulista%20Avenue!5e0!3m2!1sen!2sbr!4v1605881234567!5m2!1sen!2sbr"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <p class="mapDescription">
+        Avenida Paulista, São Paulo - SP  
+        <br>Horário de atendimento: 9h às 18h, de segunda a sexta.
+      </p>
+    </section>
+
+  <!--===== FOOTER =====-->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- Logo ou nome -->
+      <div class="footer-logo">
+        <h2>SeuNome</h2>
+        <p>Criando sites modernos e rápidos para o seu negócio.</p>
+      </div>
+
+      <!-- Links rápidos -->
+      <div class="footer-links">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div class="footer-contact">
+        <h3 class="footer-titulo">Contato</h3>
+        <p>Email: <a href="mailto:seuemail@gmail.com">seuemail@gmail.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank">(99) 99999-9999</a></p>
+      </div>
+
+      <!-- Redes sociais -->
+      <div class="footer-social">
+        <h3>Siga-me</h3>
+        <div class="social-icons">
+          <a href="https://instagram.com/seuinsta" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://facebook.com/seuface" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+          </a>
+          <a href="https://youtube.com/seuyt" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direitos autorais -->
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> SeuNome. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

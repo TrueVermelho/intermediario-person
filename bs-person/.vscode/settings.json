@@ -1,0 +1,85 @@
+{
+  // 🎯 Formatação e comportamento do editor
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  },
+
+
+  // 📁 Arquivos
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+
+  // 🧠 TypeScript / JavaScript
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  
+  // 🧹 ESLint
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.format.enable": true,
+
+  // 📝 Fontes do Editor
+  "editor.fontFamily": "'Fira Code', 'JetBrains Mono', Consolas, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 20,
+  "editor.lineHeight": 24,
+  "editor.letterSpacing": -0.5,
+
+  // 🎯 Cor da seta/cursor
+  "workbench.colorCustomizations": {
+    // 🎯 Cor da seta/cursor
+    "editorCursor.foreground": "#FF4081",
+
+    // (Opcional) Cor de destaque da linha onde o cursor está
+    "editor.lineHighlightBackground": "#b340ff20" // transparente
+  },
+
+
+  // 🎨 Estilo do código
+  "editor.tokenColorCustomizations": {
+    "comments": "#00ff4c",     // Comentários
+    "keywords": "#ff458c",     // Palavras-chave
+    "strings": "#ffe600",      // Strings
+    "functions": "#b89aff",    // Funções
+    "variables": "#00c3ff",    // Variáveis
+    "numbers": "#2df1ff",      // Números
+    "types": "#9cffeb",        // Tipos
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "keyword",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      }
+    ]
+  },
+
+  // 🎨 Tema e ícones
+  // "workbench.colorTheme": "Default Dark Modern", // (Opcional)
+  "workbench.iconTheme": "material-icon-theme",
+
+  // 💻 UI do VSCode
+  "workbench.statusBar.visible": true,
+  "editor.cursorSmoothCaretAnimation": "off", // on -> editor lento da animacao
+  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "line",
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
+}
