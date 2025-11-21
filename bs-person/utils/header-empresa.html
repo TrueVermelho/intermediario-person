@@ -1,0 +1,140 @@
+<!--===== HOME EMPRESA =====-->
+<section class="home section background" id="home">
+  <div class="overlay"></div>
+
+  <div class="home-content">
+    <h1>Crie sua presença online com <span>profissionalismo</span>.</h1>
+    <p>Sites modernos, rápidos e totalmente personalizados para o seu negócio.</p>
+
+    <div class="home-buttons">
+      <a href="#servicos" class="btn-primary">Ver Serviços</a>
+      <a href="#contato" class="btn-secondary">Entrar em Contato</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===== HOME ===== */
+.home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Background + overlay escuro */
+.background {
+  background-image: url('./img/background-city.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.background .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+/* Conteúdo central */
+.home-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.home-content h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.home-content h1 span {
+  color: #4CAF50;
+}
+
+.home-content p {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 35px;
+}
+
+/* Botões */
+.home-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #43a047;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.btn-secondary:hover {
+  background: #4CAF50;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===== ANIMAÇÃO ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

@@ -3,8 +3,24 @@
   background-image: url('../img/background-predio.jpg');
   /* substitua a imagem */
   background-size: cover;
-  background-position: top;
+  background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   overflow: hidden;
+}
+
+/* camada escura transparente */
+.background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  /* ajuste o 0.55 conforme quiser mais ou menos escuro */
+  z-index: 1;
+}
+
+/* garante que o conteúdo apareça por cima */
+.background>* {
+  position: relative;
+  z-index: 2;
 }

@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-  --primary-color: #f4b400;
-  --secondary-color: #ffffff;
-  --background-color: #fdfdfd;
+  --primary-color: #1e463d;
+  --primary-color-alt: #316b5e;
   --linear-gradient: linear-gradient(54deg,
-      rgba(244, 180, 0, 0.95) 34%,
-      rgba(255, 255, 255, 0.95));
+      rgba(88, 37, 85, 0.726) 34%,
+      hsla(36, 83%, 72%, 0.781));
+
   --title-color: #222222;
   --text-color: #555555;
   /*======= Font Family ========*/
