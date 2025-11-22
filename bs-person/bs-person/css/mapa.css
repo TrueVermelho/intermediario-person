@@ -9,7 +9,7 @@
 .titleMap {
   margin-bottom: 20px;
   color: #222;
-  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-size: clamp(3rem, 2vw, 2rem);
   font-weight: 600;
 }
 
@@ -41,7 +41,7 @@
 .mapDescription {
   margin-top: 20px;
   color: white;
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  font-size: clamp(1.5rem, 1.2vw, 1rem);
   line-height: 1.5;
 }
 

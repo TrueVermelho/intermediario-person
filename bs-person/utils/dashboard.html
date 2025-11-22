@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard - Construção</title>
+
+<style>
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f3f4f6;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================================
+   SIDEBAR (DESKTOP)
+================================ */
+.sidebar {
+  width: 260px;
+  background: #111827;
+  color: #fff;
+  padding: 25px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transform: translateX(0);  /* SEM esconder no desktop */
+  transition: transform 0.3s ease;
+}
+
+.sidebar h2 {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  color: #4CAF50;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 1.1rem;
+  transition: 0.2s;
+}
+
+.sidebar ul li a:hover {
+  color: #4CAF50;
+}
+
+/* ================================
+   NAVBAR (CELULAR)
+================================ */
+.mobile-nav {
+  display: none;
+  width: 100%;
+  background: #111827;
+  padding: 15px 20px;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn div {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+.main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 30px;
+  transition: 0.3s;
+}
+
+/* Topbar */
+.topbar {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+}
+
+.profile {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #111;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card span {
+  color: #4CAF50;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Tabela */
+.services {
+  margin-top: 35px;
+}
+
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.service-table th,
+.service-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+@media (max-width: 768px) {
+
+  /* NAVBAR aparece */
+  .mobile-nav {
+    display: flex;
+  }
+
+  /* SIDEBAR vira menu escondido */
+  .sidebar {
+    transform: translateX(-100%);  /* começa escondida no mobile */
+    top: 60px;
+    height: calc(100vh - 60px);
+    z-index: 15;
+  }
+
+  /* quando aberta */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* MAIN ocupa tela toda */
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 80px;
+  }
+
+  /* cards uma coluna */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= MOBILE NAV ================= -->
+<div class="mobile-nav">
+  <h2>Construtora</h2>
+
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </button>
+</div>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="sidebar" id="sidebar">
+  <h2>Construtora</h2>
+  <ul>
+    <li><a href="#">Dashboard</a></li>
+    <li><a href="#">Projetos</a></li>
+    <li><a href="#">Clientes</a></li>
+    <li><a href="#">Serviços</a></li>
+    <li><a href="#">Financeiro</a></li>
+    <li><a href="#">Configurações</a></li>
+  </ul>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <h1>Dashboard</h1>
+    <div class="profile">Olá, Usuário</div>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card"><h3>Projetos Ativos</h3><span>12</span></div>
+    <div class="card"><h3>Serviços Pendentes</h3><span>8</span></div>
+    <div class="card"><h3>Clientes</h3><span>34</span></div>
+    <div class="card"><h3>Faturamento Mensal</h3><span>R$ 27.400</span></div>
+  </div>
+
+  <!-- Serviços -->
+  <div class="services">
+    <h2>Serviços Recentes</h2>
+
+    <table class="service-table">
+      <thead>
+        <tr>
+          <th>Serviço</th>
+          <th>Status</th>
+          <th>Responsável</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr><td>Fundação Residencial</td><td>Em andamento</td><td>Marcos Silva</td><td>12/11/2025</td></tr>
+        <tr><td>Reforma de Banheiro</td><td>Concluído</td><td>Carla Souza</td><td>10/11/2025</td></tr>
+        <tr><td>Construção de Muro</td><td>Aguardando</td><td>Bruno Rocha</td><td>08/11/2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script>
+function toggleMenu() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
