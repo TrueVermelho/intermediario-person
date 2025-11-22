@@ -39,7 +39,7 @@
 
 .nav ul li a {
   font-family: var(--font-family-secondary);
-  font-size: var(--p1);
+  font-size: 2rem;
   font-weight: var(--semibold);
   color: white;
   text-decoration: none;
