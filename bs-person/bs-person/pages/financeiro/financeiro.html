@@ -1,75 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Financeiro - Construção</title>
-<style>
-/* === RESET === */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-body { background: #f3f4f6; display:flex; min-height:100vh; }
-
-/* SIDEBAR */
-.sidebar {
-  width: 260px; background: #111827; color:#fff; padding:25px; position:fixed; left:0; top:0; bottom:0; transition:transform .3s;
-}
-.sidebar h2 { color:#4CAF50; margin-bottom:30px; font-size:1.6rem; }
-.sidebar ul { list-style:none; }
-.sidebar ul li { margin-bottom:18px; }
-.sidebar ul li a { text-decoration:none; color:#e5e7eb; font-size:1.05rem; }
-.sidebar ul li a:hover { color:#4CAF50; }
-
-/* MOBILE NAV */
-.mobile-nav { display:none; width:100%; background:#111827; padding:15px 20px; color:#fff; position:fixed; top:0; z-index:20; justify-content:space-between; align-items:center;}
-.menu-btn { background:none; border:none; cursor:pointer; }
-.menu-btn div { width:28px; height:3px; background:#fff; margin:5px 0; }
-
-/* MAIN */
-.main { margin-left:260px; width:calc(100% - 260px); padding:30px; transition:0.3s; }
-
-/* TOPBAR */
-.topbar { background:#fff; padding:15px 20px; border-radius:8px; margin-bottom:20px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display:flex; justify-content:space-between; align-items:center; }
-.topbar h1 { font-size:1.6rem; }
-.profile { font-weight:700; color:#111; }
-
-/* SUMMARY CARDS */
-.summary { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:20px; }
-.card { background:#fff; padding:18px; border-radius:10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
-.card h3 { font-size:1rem; color:#666; margin-bottom:8px; }
-.card .value { font-size:1.4rem; font-weight:700; color:#111; }
-
-/* CONTROLS */
-.controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:16px; }
-.controls input[type="date"], .controls select, .controls input[type="text"] {
-  padding:8px 10px; border-radius:6px; border:1px solid #ddd; background:#fff;
-}
-.btn {
-  background:#4CAF50; color:#fff; padding:10px 14px; border:none; border-radius:6px; cursor:pointer; font-weight:600;
-}
-.btn.secondary { background:#6b7280; }
-
-/* TABLE */
-.table-wrap { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
-.finance-table { width:100%; border-collapse:collapse; }
-.finance-table thead { background:#f8fafc; }
-.finance-table th, .finance-table td { padding:12px 14px; text-align:left; border-bottom:1px solid #f1f1f1; font-size:0.95rem; }
-.type-in { font-weight:700; padding:6px 10px; border-radius:12px; display:inline-block; }
-.type-entrada { color:#155724; background:#d4edda; }
-.type-saida { color:#721c24; background:#f8d7da; }
-
-/* FOOTER SUMMARY */
-.footer-summary { display:flex; justify-content:space-between; gap:12px; padding:12px 14px; align-items:center; }
-
-/* SMALL SCREENS */
-@media (max-width:768px) {
-  .mobile-nav { display:flex; }
-  .sidebar { transform: translateX(-100%); top:60px; height: calc(100vh - 60px); z-index:15; }
-  .sidebar.open { transform: translateX(0); }
-  .main { margin-left:0; width:100%; padding-top:88px; }
-  .controls { flex-direction:column; align-items:flex-start; }
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Financeiro - Construção</title>
+  <link rel="stylesheet" href="./style-financeiro.css">
 </head>
+
 <body>
 
 <!-- MOBILE NAV -->
@@ -82,13 +19,13 @@ body { background: #f3f4f6; display:flex; min-height:100vh; }
 <aside class="sidebar" id="sidebar">
   <h2>Construtora</h2>
   <ul>
-    <li><a href="../index.html">HOME</a></li>
-    <li><a href="#">Dashboard</a></li>
-    <li><a href="projetos.html">Projetos</a></li>
-    <li><a href="clientes.html">Clientes</a></li>
-    <li><a href="services.html">Serviços</a></li>
-    <li><a href="#">Financeiro</a></li>
-    <li><a href="#">Configurações</a></li>
+    <li><a href="../../index.html" target="_blank">HOME</a></li>
+    <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+    <li><a href="../projects/projects.html">Projetos</a></li>
+    <li><a href="../clients/clients.html">Clientes</a></li>
+    <li><a href="../services/services.html">Serviços</a></li>
+    <li><a href="../financeiro/financeiro.html" style="color: #4CAF50;">Financeiro</a></li>
+    <li><a href="../configurations/configuration.html">Configurações</a></li>
   </ul>
 </aside>
 
@@ -195,161 +132,7 @@ body { background: #f3f4f6; display:flex; min-height:100vh; }
     </div>
   </div>
 </div>
-
-<script>
-/* Menu toggle */
-function toggleMenu(){ document.getElementById('sidebar').classList.toggle('open'); }
-
-/* Dados iniciais - exemplo */
-let transactions = [
-  {desc:'Recebimento - Residencial Aurora', tipo:'entrada', cat:'Recebimento de cliente', valor:27400.00, date:'2025-11-10', status:'pago'},
-  {desc:'Compra de cimento', tipo:'saida', cat:'Materiais', valor:4500.35, date:'2025-11-05', status:'pago'},
-  {desc:'Pagamento equipe', tipo:'saida', cat:'Mão de obra', valor:8200.00, date:'2025-11-12', status:'pago'},
-  {desc:'Adiantamento - Loja Center', tipo:'entrada', cat:'Recebimento de cliente', valor:10000.00, date:'2025-11-20', status:'areceber'},
-  {desc:'Compra de tinta', tipo:'saida', cat:'Materiais', valor:1200.00, date:'2025-11-22', status:'pago'}
-];
-
-/* Formatação monetária */
-const fmt = v => {
-  const n = Number(v) || 0;
-  return n.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-}
-
-/* Render tabela e cards */
-function render() {
-  const tbody = document.getElementById('finance-tbody');
-  tbody.innerHTML = '';
-  const from = document.getElementById('filter-from').value;
-  const to = document.getElementById('filter-to').value;
-  const type = document.getElementById('filter-type').value;
-  const search = document.getElementById('filter-search').value.toLowerCase().trim();
-
-  let shown = transactions.filter(t => {
-    if (from && t.date < from) return false;
-    if (to && t.date > to) return false;
-    if (type !== 'all' && t.tipo !== type) return false;
-    if (search) {
-      const s = (t.desc + ' ' + t.cat).toLowerCase();
-      if (!s.includes(search)) return false;
-    }
-    return true;
-  });
-
-  let totalDisplayed = 0;
-  let faturamento = 0, despesas = 0, aReceber = 0;
-
-  shown.forEach(t => {
-    const tr = document.createElement('tr');
-    const tipoBadge = `<span class="type-in ${t.tipo==='entrada' ? 'type-entrada' : 'type-saida'}">${t.tipo === 'entrada' ? 'Entrada' : 'Saída'}</span>`;
-    tr.innerHTML = `
-      <td>${t.desc}</td>
-      <td>${tipoBadge}</td>
-      <td>${t.cat}</td>
-      <td>${fmt(t.valor)}</td>
-      <td>${t.date}</td>
-      <td>${t.status === 'pago' ? 'Pago' : 'A receber'}</td>
-    `;
-    tbody.appendChild(tr);
-
-    totalDisplayed += t.tipo === 'entrada' ? t.valor : -t.valor;
-  });
-
-  // Totais (considerando todo o mês filtrado)
-  const allFiltered = transactions.filter(t => {
-    if (from && t.date < from) return false;
-    if (to && t.date > to) return false;
-    return true;
-  });
-  allFiltered.forEach(t => {
-    if (t.tipo === 'entrada') {
-      faturamento += t.valor;
-      if (t.status === 'areceber') aReceber += t.valor;
-    } else {
-      despesas += t.valor;
-    }
-  });
-
-  document.getElementById('card-faturamento').textContent = fmt(faturamento);
-  document.getElementById('card-despesas').textContent = fmt(despesas);
-  document.getElementById('card-lucro').textContent = fmt(faturamento - despesas);
-  document.getElementById('card-areceber').textContent = fmt(aReceber);
-
-  document.getElementById('rows-count').textContent = shown.length;
-  document.getElementById('total-exibido').textContent = fmt(totalDisplayed);
-}
-
-/* Filtros */
-function applyFilters(){ render(); }
-
-/* Modal */
-function openNewTransaction(){
-  document.getElementById('m-desc').value = '';
-  document.getElementById('m-tipo').value = 'entrada';
-  document.getElementById('m-cat').value = '';
-  document.getElementById('m-valor').value = '';
-  document.getElementById('m-data').value = new Date().toISOString().slice(0,10);
-  document.getElementById('m-status').value = 'pago';
-  document.getElementById('modal').style.display = 'flex';
-}
-function closeModal(){ document.getElementById('modal').style.display = 'none'; }
-
-/* Salvar transação */
-function saveTransaction(){
-  const desc = document.getElementById('m-desc').value.trim();
-  const tipo = document.getElementById('m-tipo').value;
-  const cat = document.getElementById('m-cat').value.trim();
-  const valor = parseFloat(document.getElementById('m-valor').value) || 0;
-  const date = document.getElementById('m-data').value;
-  const status = document.getElementById('m-status').value;
-
-  if (!desc || !cat || !valor || !date) {
-    alert('Preencha todos os campos corretamente.');
-    return;
-  }
-
-  transactions.unshift({desc, tipo, cat, valor, date, status});
-  closeModal();
-  render();
-}
-
-/* Export CSV (Excel compatível) */
-function exportCSV(){
-  // Cabeçalho
-  const header = ['Descrição','Tipo','Categoria','Valor','Data','Status'];
-  // Usar os itens atualmente filtrados
-  const from = document.getElementById('filter-from').value;
-  const to = document.getElementById('filter-to').value;
-  const type = document.getElementById('filter-type').value;
-  const search = document.getElementById('filter-search').value.toLowerCase().trim();
-
-  const rows = transactions.filter(t => {
-    if (from && t.date < from) return false;
-    if (to && t.date > to) return false;
-    if (type !== 'all' && t.tipo !== type) return false;
-    if (search) {
-      const s = (t.desc + ' ' + t.cat).toLowerCase();
-      if (!s.includes(search)) return false;
-    }
-    return true;
-  }).map(t => [t.desc, t.tipo, t.cat, t.valor.toFixed(2).replace('.',','), t.date, t.status]);
-
-  let csvContent = header.join(';') + '\n';
-  rows.forEach(r => { csvContent += r.join(';') + '\n'; });
-
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'financeiro_export.csv';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
-
-/* Inicializa */
-render();
-</script>
+<script src="./js-financeiro.js"></script>
 
 </body>
 </html>

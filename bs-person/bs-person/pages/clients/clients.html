@@ -1,181 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Clientes - Construção</title>
-
-<style>
-/* === RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background: #f3f4f6;
-  display: flex;
-  min-height: 100vh;
-}
-
-/* ================================
-   SIDEBAR
-================================ */
-.sidebar {
-  width: 260px;
-  background: #111827;
-  color: #fff;
-  padding: 25px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  transition: transform 0.3s ease;
-}
-
-.sidebar h2 {
-  color: #4CAF50;
-  margin-bottom: 30px;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar ul li {
-  margin-bottom: 20px;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: #e5e7eb;
-  font-size: 1.1rem;
-}
-
-.sidebar ul li a:hover {
-  color: #4CAF50;
-}
-
-/* ================================
-   MOBILE NAV
-================================ */
-.mobile-nav {
-  display: none;
-  width: 100%;
-  background: #111827;
-  padding: 15px 20px;
-  color: #fff;
-  position: fixed;
-  top: 0;
-  z-index: 20;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.menu-btn div {
-  width: 28px;
-  height: 3px;
-  background: #fff;
-  margin: 5px 0;
-}
-
-/* ================================
-   MAIN
-================================ */
-.main {
-  margin-left: 260px;
-  width: calc(100% - 260px);
-  padding: 30px;
-  transition: 0.3s;
-}
-
-/* Topbar */
-.topbar {
-  background: #fff;
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.topbar h1 {
-  font-size: 1.8rem;
-}
-
-/* Botão adicionar */
-.add-btn {
-  background: #4CAF50;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: 0.2s;
-}
-
-.add-btn:hover {
-  background: #43a047;
-}
-
-/* Tabela */
-.client-table {
-  width: 100%;
-  margin-top: 10px;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-
-.client-table th,
-.client-table td {
-  padding: 15px;
-  text-align: left;
-}
-
-.client-table tr:nth-child(even) {
-  background: #f9f9f9;
-}
-
-/* ================================
-   RESPONSIVIDADE
-================================ */
-@media (max-width: 768px) {
-
-  .mobile-nav {
-    display: flex;
-  }
-
-  .sidebar {
-    transform: translateX(-100%);
-    top: 60px;
-    height: calc(100vh - 60px);
-    z-index: 15;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main {
-    margin-left: 0;
-    width: 100%;
-    padding-top: 80px;
-  }
-
-  .client-table {
-    font-size: 0.9rem;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clientes - Construção</title>
+  <link rel="stylesheet" href="./style-clients.css">
 </head>
 <body>
 
@@ -192,12 +21,12 @@ body {
   <h2>Construtora</h2>
   <ul>
     <li><a href="../index.html">HOME</a></li>
-    <li><a href="#">Dashboard</a></li>
-    <li><a href="#">Projetos</a></li>
-    <li><a href="#">Clientes</a></li>
-    <li><a href="#">Serviços</a></li>
-    <li><a href="#">Financeiro</a></li>
-    <li><a href="#">Configurações</a></li>
+    <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+    <li><a href="../projects/projects.html">Projetos</a></li>
+    <li><a href="../clients/clients.html" style="color: #4CAF50;">Clientes</a></li>
+    <li><a href="../services/services.html">Serviços</a></li>
+    <li><a href="../financeiro/financeiro.html">Financeiro</a></li>
+    <li><a href="../configurations/configuration.html">Configurações</a></li>
   </ul>
 </aside>
 
