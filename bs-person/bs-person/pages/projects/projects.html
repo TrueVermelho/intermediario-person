@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projetos - Construção</title>
+
+<style>
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f3f4f6;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+.sidebar {
+  width: 260px;
+  background: #111827;
+  color: #fff;
+  padding: 25px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.3s ease;
+}
+
+.sidebar h2 {
+  color: #4CAF50;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 1.1rem;
+}
+
+.sidebar ul li a:hover {
+  color: #4CAF50;
+}
+
+/* ================================
+   MOBILE NAV
+================================ */
+.mobile-nav {
+  display: none;
+  width: 100%;
+  background: #111827;
+  padding: 15px 20px;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn div {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+.main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 30px;
+  transition: 0.3s;
+}
+
+/* Topbar */
+.topbar {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+}
+
+/* Tabela de projetos */
+.project-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.project-table th,
+.project-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.andamento { color: #007bff; }
+.status.concluido { color: #28a745; }
+.status.aguardando { color: #ff9800; }
+
+/* Botão adicionar projeto */
+.add-btn {
+  background: #4CAF50;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background: #43a047;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+@media (max-width: 768px) {
+
+  .mobile-nav {
+    display: flex;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    top: 60px;
+    height: calc(100vh - 60px);
+    z-index: 15;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 80px;
+  }
+
+  .project-table {
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV MOBILE -->
+<div class="mobile-nav">
+  <h2>Construtora</h2>
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </button>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <h2>Construtora</h2>
+  <ul>
+    <li><a href="../../index.html">HOME</a></li>
+    <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+    <li><a href="../projects/projects.html">Projetos</a></li>
+    <li><a href="../clients/clients.html">Clientes</a></li>
+    <li><a href="#">Serviços</a></li>
+    <li><a href="#">Financeiro</a></li>
+    <li><a href="#">Configurações</a></li>
+  </ul>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="topbar">
+    <h1>Projetos</h1>
+    <div class="profile">Olá, Usuário</div>
+  </div>
+
+  <button class="add-btn">+ Novo Projeto</button>
+
+  <table class="project-table">
+    <thead>
+      <tr>
+        <th>Projeto</th>
+        <th>Status</th>
+        <th>Responsável</th>
+        <th>Início</th>
+        <th>Previsão</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Residencial Aurora</td>
+        <td class="status andamento">Em andamento</td>
+        <td>Marcos Silva</td>
+        <td>01/10/2025</td>
+        <td>15/02/2026</td>
+      </tr>
+
+      <tr>
+        <td>Loja Comercial Center</td>
+        <td class="status concluido">Concluído</td>
+        <td>Carla Souza</td>
+        <td>10/05/2025</td>
+        <td>22/09/2025</td>
+      </tr>
+
+      <tr>
+        <td>Condomínio Palmas</td>
+        <td class="status aguardando">Aguardando</td>
+        <td>Bruno Rocha</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
+<script>
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
