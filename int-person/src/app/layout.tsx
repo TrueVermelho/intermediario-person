@@ -1,4 +1,4 @@
-import Footer from '@/components/body/Footer/Footer';
+import Footer from '@/components/HomePage/body/Footer/Footer';
 import { metadata } from '../lib/seo-metadata';
 
 import './globals.css';
