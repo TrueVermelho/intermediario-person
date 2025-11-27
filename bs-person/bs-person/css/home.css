@@ -36,7 +36,7 @@ h1 span {
 .botao-home {
   font-size: 2rem;
   display: inline-block;
-  background: #ff8800;
+  background: #ff6a00;
   padding: 30px 60px;
   border-radius: 30px;
   text-decoration: none;
@@ -48,7 +48,7 @@ h1 span {
 }
 
 .botao-home:hover {
-  background: #ff6a00;
+  background: #ff8800;
   color: #fff;
   transform: scale(1.05);
 }
