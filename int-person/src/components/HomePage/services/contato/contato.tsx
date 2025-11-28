@@ -1,4 +1,4 @@
-import Email from "@/components/services/email/email";
+import Email from "@/components/HomePage/services/email/email";
 import './styleContato.css';
 
 export default function Contato() {

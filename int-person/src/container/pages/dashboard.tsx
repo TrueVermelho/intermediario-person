@@ -1,5 +1,6 @@
 'use clients';
 
+import DashboardForm from "@/components/pages/dashboard/dashboardForm";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Dashboard() {
@@ -11,6 +12,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <DashboardForm />
     </>
   );
 }

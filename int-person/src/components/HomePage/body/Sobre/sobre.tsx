@@ -1,4 +1,4 @@
-import Youtube from '@/components/services/youtube/youtube';
+import Youtube from '@/components/HomePage/services/youtube/youtube';
 import './styleSobre.css';
 
 export default function Sobre() {
