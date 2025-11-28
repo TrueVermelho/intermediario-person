@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+  background: #f3f4f6;
+  display: flex;
+  min-height: 100vh;
+  color: #1f2937;
+}
+
+/* ------------------------------
+   MAIN CONTENT
+------------------------------ */
+.main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 32px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* ------------------------------
+   BOTÃO ADICIONAR PROJETO
+------------------------------ */
+.add-btn {
+  background: #10b981;
+  color: #fff;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.add-btn:hover {
+  background: #0ea971;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+/* ------------------------------
+   TABELA DE PROJETOS
+------------------------------ */
+.project-table {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.project-table th {
+  background: #111827;
+  color: #fff;
+  padding: 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.project-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.project-table tr:last-child td {
+  border-bottom: none;
+}
+
+.project-table tr:hover td {
+  background: #f9fafb;
+}
+
+/* ------------------------------
+   STATUS
+------------------------------ */
+.status {
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+.status.andamento {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+}
+
+.status.concluido {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.status.aguardando {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+/* ------------------------------
+   RESPONSIVIDADE
+------------------------------ */
+@media (max-width: 900px) {
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .project-table th,
+  .project-table td {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

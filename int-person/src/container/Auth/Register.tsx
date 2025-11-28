@@ -31,6 +31,7 @@ export default function Register() {
       await setDoc(doc(db, "users", user.uid), {
         name,
         email,
+        role: "user",
         createdAt: serverTimestamp(),
       });
 

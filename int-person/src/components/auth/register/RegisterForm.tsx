@@ -15,6 +15,7 @@ export default function RegisterForm({
   setEmail,
   setPassword
 }: RegisterFormProps) {
+
   return (
     <form onSubmit={handleRegister} className="registerForm">
       <input
