@@ -17,3 +17,29 @@
   border-radius: 25px;
   font-size: 0.95rem;
 }
+
+/* ---------------------------------------------------
+   AJUSTE PROFILE EM TELAS MUITO PEQUENAS
+--------------------------------------------------- */
+@media (max-width: 300px) {
+  .topbar {
+    flex-direction: column;
+    /* empilha título e profile */
+    align-items: flex-start;
+    /* alinha à esquerda */
+    gap: 8px;
+    /* espaço entre eles */
+  }
+
+  .topbar h1 {
+    font-size: 1.2rem;
+    /* reduz título */
+  }
+
+  .profile {
+    font-size: 0.9rem;
+    /* reduz texto do profile */
+    word-break: break-word;
+    /* quebra se for muito longo */
+  }
+}

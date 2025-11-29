@@ -24,10 +24,10 @@ body {
   z-index: 50;
 }
 
+/* Sidebar desaparece abaixo de 768px */
 @media (max-width: 768px) {
   .main {
     margin-left: 0;
-    /* ocupa toda largura em telas menores */
     padding: 20px;
   }
 }
@@ -49,6 +49,14 @@ body {
 
 .add-btn:hover {
   background: #1e40af;
+}
+
+/* Botão ocupa 100% abaixo de 1000px */
+@media (max-width: 1000px) {
+  .add-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* ---------------------------------------------------
@@ -106,39 +114,11 @@ body {
 /* ---------------------------------------------------
    RESPONSIVIDADE
 --------------------------------------------------- */
-@media (max-width: 890px) {
 
-  .project-table tr {
-    padding: 10px;
-  }
-
-  .project-table td {
-    padding: 0px;
-    position: relative;
-  }
-
-  .project-table td::before {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 4px;
-  }
-}
-
-@media (max-width: 800px) {
-
-  .main {
-    margin-left: 240px;
-  }
-}
-
-@media (max-width: 768px) {
-  .main {
-    margin-left: 0;
-  }
-
+/* Abaixo de 1000px: tabela já vira estilo mobile/card */
+@media (max-width: 1000px) {
   .project-table thead {
     display: none;
-    /* esconde cabeçalho */
   }
 
   .project-table,
@@ -172,9 +152,9 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  .add-btn {
-    width: 100%;
-    text-align: center;
+/* Sidebar só desaparece abaixo de 768px */
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
   }
 }
