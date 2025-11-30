@@ -1,6 +1,6 @@
 'use client';
 
-import ConfigurationForm from "@/components/pages/configuration/configurationForm";
+import ConfigurationForm from "@/components/paginas/configuration/configurationForm";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Configuration() {

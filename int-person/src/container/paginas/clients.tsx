@@ -1,6 +1,6 @@
 'use clients';
 
-import ClientsForm from "@/components/pages/clients/clientsForm";
+import ClientsForm from "@/components/paginas/clients/clientsForm";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Clients() {

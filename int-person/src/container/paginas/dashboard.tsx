@@ -1,9 +1,9 @@
 'use clients';
 
-import ProjectsForm from "@/components/pages/projects/projectsForm";
+import DashboardForm from "@/components/paginas/dashboard/dashboardForm";
 import { useAuth } from "@/hooks/useAuth";
 
-export default function Projects() {
+export default function Dashboard() {
   const { user, loading } = useAuth();
 
   if (loading) return <p>Carregando...</p>;
@@ -11,7 +11,7 @@ export default function Projects() {
 
   return (
     <>
-      <ProjectsForm />
+      <DashboardForm />
     </>
   );
 }

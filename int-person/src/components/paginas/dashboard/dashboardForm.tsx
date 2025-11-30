@@ -1,8 +1,8 @@
 'use client';
 
-import MobileNav from '@/components/pages/body/navegador/mobile-nav';
-import SidebarNav from '@/components/pages/body/sidebar/sidebar-nav';
-import TopbarNav from '@/components/pages/body/topbar/topbar-nav';
+import MobileNav from '@/components/paginas/body/navegador/mobile-nav';
+import SidebarNav from '@/components/paginas/body/sidebar/sidebar-nav';
+import TopbarNav from '@/components/paginas/body/topbar/topbar-nav';
 import { useState } from 'react';
 import './styleDashboardForm.css';
 
