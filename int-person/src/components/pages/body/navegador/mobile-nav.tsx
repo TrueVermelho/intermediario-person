@@ -1,5 +1,6 @@
 'use client';
 
+import LogoutButton from '@/components/auth/logout/LogoutButton';
 import './styleMobileNav.css';
 
 interface MobileNavProps {
@@ -18,6 +19,7 @@ export default function MobileNav({ open, toggleMenu }: MobileNavProps) {
           <div></div>
           <div></div>
           <div></div>
+          <LogoutButton />
         </button>
       </div>
 

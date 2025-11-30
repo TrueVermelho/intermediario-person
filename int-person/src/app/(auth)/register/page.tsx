@@ -1,3 +1,5 @@
+"use client";
+
 import Register from "@/container/Auth/Register";
 
 export default function RegisterPage() {
