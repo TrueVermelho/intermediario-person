@@ -4,7 +4,7 @@
  - Separar os dados do SEO na função metadata, para deixar limpo _layout.tsx_
 ### Arquivo em: src/lib/seo-metadata.ts
 
-```
+```tsx
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
  - ThemeProvider serve para poder importar theme no html.
 ### Arquivo em: src/components/layout/ThemeProviderWrapper.tsx
 
-```
+```tsx
 // src/components/layout/ThemeProviderWrapper.tsx
 'use client';
   
@@ -66,7 +66,7 @@ export default function ThemeProviderWrapper({
 ```
 ## 3. layout.tsx geral final
 
-```
+```tsx
 import ThemeProviderWrapper from '../components/ThemeProviderWrapper';
 import { GlobalStyles } from '../style/global-styles';
 import { metadata } from '../lib/seo-metadata';

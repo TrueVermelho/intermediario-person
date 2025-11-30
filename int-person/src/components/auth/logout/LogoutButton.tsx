@@ -20,11 +20,13 @@ export default function LogoutButton() {
   }
 
   return (
-    <button
-      onClick={handleLogout}
-      className="BotaoLogout"
-    >
-      Sair
-    </button>
+    <>
+      <button
+        onClick={handleLogout}
+        className="BotaoLogout"
+      >
+        Sair
+      </button>
+    </>
   );
 }

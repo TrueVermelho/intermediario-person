@@ -1,5 +1,6 @@
 'use client';
 
+import LogoutButton from '@/components/auth/logout/LogoutButton';
 import './styleSidebarNav.css';
 
 interface SidebarNavProps {
@@ -79,6 +80,8 @@ export default function SidebarNav({ open, page }: SidebarNavProps) {
             > 🛠 Serviços
             </a>
           </li>
+
+          <LogoutButton />
 
         </ul>
       </aside>

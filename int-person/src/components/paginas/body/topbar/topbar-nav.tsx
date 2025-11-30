@@ -1,5 +1,6 @@
 'use clients';
 
+import LogoutButton from "@/components/auth/logout/LogoutButton";
 import { useAuth } from "@/hooks/useAuth";
 import './styleTopbarNav.css';
 
