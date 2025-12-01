@@ -6,21 +6,26 @@ import SidebarNav from '@/components/paginas/body/sidebar/sidebar-nav';
 import { database } from "@/lib/firebase";
 import { push, ref } from "firebase/database";
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ClientsReader } from '@/components/paginas/clients/services/clientsReader';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './styleClientsForm.css';
+
+export interface Client {
+  name: string;
+  phone: string;
+  email: string;
+  city: string;
+  project: string;
+}
 
 export default function ClientsForm() {
   const [open, setOpen] = useState(false);
 
-  // Dados como exemplo
-  const [clients, setClients] = useState([
-    { name: 'Marcos Almeida', phone: '(11) 99845-2301', email: 'marcos@gmail.com', city: 'São Paulo', project: 'Residencial Aurora' },
-    { name: 'Ana Vitória', phone: '(21) 98766-1144', email: 'ana_v@gmail.com', city: 'Rio de Janeiro', project: 'Condomínio Palmas' },
-    { name: 'Empresa Litoral Obras', phone: '(47) 91234-5533', email: 'contato@litoralobras.com', city: 'Florianópolis', project: 'Loja Comercial Center' },
-  ]);
+  const [clients, setClients] = useState<Client[]>([]);
 
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
+
+  const [formData, setFormData] = useState<Client>({
     name: '',
     phone: '',
     email: '',
@@ -41,23 +46,30 @@ export default function ClientsForm() {
     e.preventDefault();
 
     try {
-      // Caminho onde salvar no Realtime Database
       const clientsRef = ref(database, "clients");
-
-      // Adiciona no Firebase
       await push(clientsRef, formData);
 
-      // Atualiza UI localmente
-      setClients([...clients, formData]);
-
-      // Limpa formulário
-      setFormData({ name: '', phone: '', email: '', city: '', project: '' });
+      // esconde formulario
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        city: '',
+        project: ''
+      });
 
       setShowForm(false);
     } catch (error) {
       console.error("Erro ao adicionar cliente:", error);
     }
   }
+
+  useEffect(() => {
+    const reader = new ClientsReader();
+    const stop = reader.listen(setClients);
+
+    return () => stop();
+  }, []);
 
   return (
     <>
