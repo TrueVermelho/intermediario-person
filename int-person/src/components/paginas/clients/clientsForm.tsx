@@ -2,11 +2,17 @@
 
 import MobileNav from '@/components/paginas/body/navegador/mobile-nav';
 import SidebarNav from '@/components/paginas/body/sidebar/sidebar-nav';
+
+import { database } from "@/lib/firebase";
+import { push, ref } from "firebase/database";
+
 import { ChangeEvent, FormEvent, useState } from 'react';
 import './styleClientsForm.css';
 
 export default function ClientsForm() {
   const [open, setOpen] = useState(false);
+
+  // Dados como exemplo
   const [clients, setClients] = useState([
     { name: 'Marcos Almeida', phone: '(11) 99845-2301', email: 'marcos@gmail.com', city: 'São Paulo', project: 'Residencial Aurora' },
     { name: 'Ana Vitória', phone: '(21) 98766-1144', email: 'ana_v@gmail.com', city: 'Rio de Janeiro', project: 'Condomínio Palmas' },
@@ -31,11 +37,26 @@ export default function ClientsForm() {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setClients([...clients, formData]);
-    setFormData({ name: '', phone: '', email: '', city: '', project: '' });
-    setShowForm(false);
+
+    try {
+      // Caminho onde salvar no Realtime Database
+      const clientsRef = ref(database, "clients");
+
+      // Adiciona no Firebase
+      await push(clientsRef, formData);
+
+      // Atualiza UI localmente
+      setClients([...clients, formData]);
+
+      // Limpa formulário
+      setFormData({ name: '', phone: '', email: '', city: '', project: '' });
+
+      setShowForm(false);
+    } catch (error) {
+      console.error("Erro ao adicionar cliente:", error);
+    }
   }
 
   return (
@@ -49,8 +70,11 @@ export default function ClientsForm() {
           <div className="profile">Olá, Usuário</div>
         </div>
 
-        <button className="add-btn" onClick={() => setShowForm(!showForm)}>+ Novo Cliente</button>
+        <button className="add-btn" onClick={() => setShowForm(!showForm)}>
+          + Novo Cliente
+        </button>
 
+        {/* Formulário */}
         {showForm && (
           <form className="client-form" onSubmit={handleSubmit}>
             <input
@@ -97,6 +121,7 @@ export default function ClientsForm() {
           </form>
         )}
 
+        {/* Tabela */}
         <table className="client-table">
           <thead>
             <tr>
@@ -110,16 +135,15 @@ export default function ClientsForm() {
           <tbody>
             {clients.map((client, index) => (
               <tr key={index} className="client-row">
-                <td className="client-name" data-label="Nome">{client.name}</td>
-                <td className="client-phone" data-label="Telefone">{client.phone}</td>
-                <td className="client-email" data-label="Email">{client.email}</td>
-                <td className="client-city" data-label="Cidade">{client.city}</td>
-                <td className="client-project" data-label="Projetos">{client.project}</td>
+                <td data-label="Nome">{client.name}</td>
+                <td data-label="Telefone">{client.phone}</td>
+                <td data-label="Email">{client.email}</td>
+                <td data-label="Cidade">{client.city}</td>
+                <td data-label="Projetos">{client.project}</td>
               </tr>
             ))}
           </tbody>
         </table>
-
       </main>
     </>
   );

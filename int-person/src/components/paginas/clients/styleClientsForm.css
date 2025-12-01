@@ -24,7 +24,6 @@ body {
   z-index: 50;
 }
 
-/* Sidebar desaparece abaixo de 768px */
 @media (max-width: 768px) {
   .main {
     margin-left: 0;
@@ -53,7 +52,7 @@ body {
 }
 
 /* ---------------------------------------------------
-   BOTÃO NOVO CLIENTE
+   BOTÃO "NOVO CLIENTE"
 --------------------------------------------------- */
 .add-btn {
   background: #2563eb;
@@ -76,6 +75,42 @@ body {
     width: 100%;
     text-align: center;
   }
+}
+
+/* ---------------------------------------------------
+   FORMULÁRIO DE NOVO CLIENTE
+--------------------------------------------------- */
+.client-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.client-form input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.client-form button {
+  background: #059669;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.client-form button:hover {
+  background: #047857;
 }
 
 /* ---------------------------------------------------
@@ -113,10 +148,9 @@ body {
 }
 
 /* ---------------------------------------------------
-   RESPONSIVIDADE
+   RESPONSIVIDADE (Tabela tipo "cards")
 --------------------------------------------------- */
 
-/* Abaixo de 1000px: tabela já vira estilo mobile/card */
 @media (max-width: 1000px) {
   .client-table thead {
     display: none;
@@ -150,12 +184,5 @@ body {
     color: #111827;
     display: block;
     margin-bottom: 6px;
-  }
-}
-
-/* Sidebar só desaparece abaixo de 768px */
-@media (max-width: 768px) {
-  .main {
-    margin-left: 0;
   }
 }
