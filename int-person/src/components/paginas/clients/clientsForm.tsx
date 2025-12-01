@@ -6,17 +6,11 @@ import SidebarNav from '@/components/paginas/body/sidebar/sidebar-nav';
 import { database } from "@/lib/firebase";
 import { push, ref } from "firebase/database";
 
+import Client from '@/components/paginas/clients/services/Client';
 import { ClientsReader } from '@/components/paginas/clients/services/clientsReader';
+import { ClientsService } from '@/components/paginas/clients/services/clientsService';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './styleClientsForm.css';
-
-export interface Client {
-  name: string;
-  phone: string;
-  email: string;
-  city: string;
-  project: string;
-}
 
 export default function ClientsForm() {
   const [open, setOpen] = useState(false);
@@ -64,12 +58,20 @@ export default function ClientsForm() {
     }
   }
 
+  // Ler clients
   useEffect(() => {
     const reader = new ClientsReader();
     const stop = reader.listen(setClients);
 
     return () => stop();
   }, []);
+
+  // CRUD
+  const clientService = new ClientsService();
+  function apagarCliente(id: string) {
+    clientService.delete(id);
+  }
+
 
   return (
     <>
@@ -129,6 +131,8 @@ export default function ClientsForm() {
               onChange={handleChange}
               required
             />
+            <p>🔗 Editar</p>
+
             <button type="submit">Adicionar Cliente</button>
           </form>
         )}
@@ -145,13 +149,19 @@ export default function ClientsForm() {
             </tr>
           </thead>
           <tbody>
-            {clients.map((client, index) => (
-              <tr key={index} className="client-row">
-                <td data-label="Nome">{client.name}</td>
-                <td data-label="Telefone">{client.phone}</td>
-                <td data-label="Email">{client.email}</td>
-                <td data-label="Cidade">{client.city}</td>
-                <td data-label="Projetos">{client.project}</td>
+            {clients.map((client) => (
+              <tr key={client.id}>
+                <td>{client.name}</td>
+                <td>{client.phone}</td>
+                <td>{client.email}</td>
+                <td>{client.city}</td>
+                <td>{client.project}</td>
+
+                <td>
+                  <button onClick={() => apagarCliente(client.id)}>
+                    🗑️ Apagar
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

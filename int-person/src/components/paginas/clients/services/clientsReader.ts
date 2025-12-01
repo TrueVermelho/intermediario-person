@@ -1,7 +1,6 @@
-// ./lerClients.ts
+import Client from "@/components/paginas/clients/services/Client";
 import { database } from "@/lib/firebase";
 import { DatabaseReference, onValue, ref } from "firebase/database";
-import { Client } from "./clientsCRUD";
 
 export class ClientsReader {
   private ref: DatabaseReference;
@@ -19,8 +18,11 @@ export class ClientsReader {
 
       const data = snapshot.val();
 
-      // transforma em array com tipagem correta
-      const clients = Object.values(data) as Client[];
+      // Converte corretamente para array com id embutido
+      const clients: Client[] = Object.entries(data).map(([id, value]) => ({
+        id,
+        ...(value as Client)
+      }));
 
       callback(clients);
     });
