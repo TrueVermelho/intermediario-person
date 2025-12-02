@@ -14,11 +14,9 @@ import './styleClientsForm.css';
 
 export default function ClientsForm() {
   const [open, setOpen] = useState(false);
-
-  const [clients, setClients] = useState<Client[]>([]);
-
   const [showForm, setShowForm] = useState(false);
 
+  const [clients, setClients] = useState<Client[]>([]);
   const [formData, setFormData] = useState<Client>({
     name: '',
     phone: '',
@@ -68,9 +66,8 @@ export default function ClientsForm() {
 
   // CRUD
   const clientService = new ClientsService();
-  function apagarCliente(id: string) {
-    clientService.delete(id);
-  }
+  function apagarCliente(id: string) { clientService.delete(id); }
+  function updateCliente(id: string, data: Partial<Client>) { clientService.update(id, data); }
 
 
   return (
@@ -158,9 +155,8 @@ export default function ClientsForm() {
                 <td>{client.project}</td>
 
                 <td>
-                  <button onClick={() => apagarCliente(client.id)}>
-                    🗑️ Apagar
-                  </button>
+                  <button onClick={() => apagarCliente(client.id)}>🗑️</button>
+                  {/*<button onClick={() => updateCliente(client.id, client)}>🔧</button>*/}
                 </td>
               </tr>
             ))}
